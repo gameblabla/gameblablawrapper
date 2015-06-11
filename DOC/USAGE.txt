@@ -1,0 +1,50 @@
+So you want to use my library ?
+Great !
+I recommend you to use the provided example and make your game from that.
+
+The reason why is because i'm providing a working Makefile for the example
+and it's just easier than doing everything from scratch.
+Refer to FUNCTIONS.txt if you want to know how to use my library.
+
+HOW TO COMPILE THE EXAMPLE
+
+_________
+Windows
+_________
+
+I highly suggest you to use and install Codeblocks with MinGW instead.
+Create a new project and choose 'SDL project'.
+Provide a directory where you have put the SDL libraries and headers.
+After that, right click on the name of your project (on the middle-left of your screen) and choose 'add files' or something like that.
+
+Then pick main.c and PC_SDL2.c.
+If you are using SDL1.2 instead then choose PC_SDL12.c instead of PC_SDL2.c.
+
+My library requires SDL_mixer for Sound support so don't forget to put it in the same directory as SDL !
+SDL_image is also required if you are using any other format than BMP. 
+Same thing, put it in the same directory as SDL !
+
+Pass to the compiler this :
+-DSOUND_ENABLED -DIMAGE_CODEC_ENABLED
+
+Then you should be able to compile the provided example.
+
+If you have installed MinGW instead of Codeblocks+MinGW then great, 
+you only need to open the command prompt and type mingw-make in the same directory as the example.
+
+Don't forget to put your libraries or headers in MinGW/lib and MinGW/include !
+
+________________
+GNU/Linux (*nix)
+________________
+
+If you have not installed Allegro or SDL then open your package manager (usually Synaptic or Muno) and search for Allegro and/or SDL.
+Don't forget to install the dev version as well !
+
+To compile the example, open a terminal in the same directory as the example and type make.
+Or if you want to compile the Allegro4 version of the example, type instead : make -f Makefile.ALLEG4
+
+That's pretty much it for GNU/Linux.
+
+On BSD, you may have to use gmake instead.
+

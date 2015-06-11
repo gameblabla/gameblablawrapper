@@ -1,0 +1,296 @@
+---------------------
+Version 6.0
+---------------------
+
+Deprecated : FPS variable. It is now using a define called FPS_VIDEO instead.
+
+New function : Draw_Pixel (Available on all platforms)
+New platform : Gizmondo (Using GizSDL)
+
+Fixed platform : Dreamcast
+Moved Allegro5 port to BROKEN
+
+General bug fixing as well.
+A file called Example.c is here to help developers and enthusiasts to port it to other platforms.
+
+This is the first version released on Github.
+Now is the time to put it officially here rather than on my website.
+
+---------------------
+Version 5.1
+---------------------
+
+DROPPING COMPATIBILTY FOR OLDER VERSIONS
+
+The new sound function became Load_SFX, Play_SFX and Unload_SFX.
+Before, they were all called Load_GFX, Play_GFX and Unload_GFX.
+This was a mistake in history and this is now fixed.
+
+Some code cleanup and some bugs were fixed. (don't remember which)
+
+Added support for the Dreamcast version, Music WAV files are not supported yet.
+
+---------------------
+Version 5.0
+---------------------
+
+CSFML is now working and fully supported. (Note : Only SFML's C binding is supported)
+Joysticks are now supported for SDL 1.2, SDL 2.0, Allegro4 and SFML on PCs. (Allegro5's port doesn't support joysticks yet)
+
+For SDL 1.2, you need to pass the JOYSTICK define like this to the compiler :
+-DJOYSTICK
+
+If this is not defined then joysticks won't work.
+
+Why not make it the default behaviour ?
+Because some SDL 1.2 ports does not support joysticks properly or they are not needed.
+
+---------------------
+Version 4.1
+---------------------
+
+Add new function Clear_image.
+
+Fixes some of the warnings made by Allegro5.
+
+You can set the UNIX define for better and faster sync. 
+It defaults to SDL_Delay by default.
+
+--------------------
+Version 4.04
+---------------------
+
+It was not possible to show more than 255 images due to functions using an unsigned char.
+Now, you can use up to 64000+ ids for images. (Including tiles)
+
+--------------------
+Version 4.03
+---------------------
+
+Fixed SDL2 port. (It did not compiled before)
+Added a simple example. (A background shown on screen that can be moved)
+
+--------------------
+Version 4.02
+---------------------
+
+The TI-Nspire port did not worked properly, this is now fixed.
+Tested and works on real hardware.
+SDL_UpperBlit does not accept NULL surfaces so i had to put the size of the images instead.
+
+Clear_images did not worked properly either and this affected all the versions except the 3DO port. 
+This was an oversight and it's fixed of course.
+
+--------------------
+Version 4.01
+---------------------
+
+3DO PAL support is fixed, it did not worked properly.
+
+-------------------
+Version 4.0
+-------------------
+
+The 3DO version did not worked at all and it now works properly.
+In addition, the 3DO version is PAL optimised ! (Black Borders)
+
+Copy_Image did not worked at all, this is now fixed.
+This function is stable and works properly on all backends, 
+you should use it to minimise memory usage !
+
+The NSPIRE, GCW and PSP ports could not be compiled, this is fixed too and they should work too.
+
+The "MoveImage" example was removed but i'll bring it back, no worries.
+
+The HeliCopt3rs sample was updated.
+Its code now makes use of Copy_Image and it works on all platforms,
+with the notable exception of file path and file extensions.
+
+-----------------
+Version 3.1
+-----------------
+--------------------------------------------------------------
+!! Functions removed or deprecated !!
+--------------------------------------------------------------
+- KEY_DOWN is no more. I may reimplement it later
+ 
+Fixed some issues :
+- Clear_screen with Allegro 4 does nothing. (Not needed)
+
+Examples :
+- Helicopt3rs as a sample
+
+-----------------
+Version 3.01
+-----------------
+
+Fixed a bug with the SDL 1.2 version, some essential functions were missing !
+Please update !
+
+-----------------
+Version 3.0
+-----------------
+ --------------------------------------------------------------
+ !! Functions removed or deprecated !!
+ --------------------------------------------------------------
+ - Set_videomode is no more.
+ 
+ --------------------------------------------------------------
+  New functions
+ --------------------------------------------------------------
+
+	- Sync_refresh()
+	Sync with the FrameRate without refreshing the screen.
+	
+	- Clear_Images();
+	Clears all the Images in Memory.
+	
+	-----------------------------------------------------------------------------------------------------
+	  DANGEROUS - DON'T USE WITH ALLEGRO 5 / SDL 2.0 !
+	-----------------------------------------------------------------------------------------------------
+	
+	- Faster_clearing()
+	Clears only a certain specified area.
+	
+	- Faster_update()
+	Update only a certain specified area.
+	Very effective on Atari Falcon using SDL.
+	
+	
+ --------------------------------------------------------------
+  Notes
+ --------------------------------------------------------------
+
+  For Version 3.0 and Version 2.0, speed was greatly improved
+  thanks to my efforts trying to port my secret project on Atari Falcon. (Specially Version 3.0)
+  Note that the speed increase only affect SDL 1.2,
+  which is used by the GCW Zero, PSP, Ti Nspire and PC ports.
+  
+  Unfortunely, the new functions do not work properly 
+  with Allegro 5/ SDL 2.0 because they are constanly refreshing the screen
+  so careful when you are coding your game. (or just don't use them)
+	
+	
+-----------------
+Version 2.0
+-----------------
+ 
+ --------------------------------------------------------------
+ !! Functions deprecated or changed !!
+ --------------------------------------------------------------
+ - Unload_Music() is now Clean_Music()
+	Its name had be changed because it conflicted with SDL_mixer.
+	
+ --------------------------------------------------------------
+  Fixed
+ --------------------------------------------------------------
+ - The TI-nspire port didn't compiled well. This is fixed.
+ - Some build warnings were fixed too. (but not all)
+ 
+ ---------------
+ Features
+ ---------------
+ 
+ - With game_name, you can choose the name of the window. (Usually not visible in fullscreen but oh well)
+
+ ---------------
+ Comments
+ ---------------
+	
+ Version 2.0 is released and brings lots of improvements.
+ First of all, support for Allegro 4 was added and it works quite great.
+ 
+ The Allegro4 version is the only one to support Joysticks on PC.
+ 
+ There's also full support for SDL2 and partial support for Allegro5 :
+ Both of them support scaling for higher displays, which is nice.
+ 
+ The Allegro5's scaling code is a bit different from the SDL2 version,
+ but it should be very similar to the SDL2 version.
+ I'm not sure though if that's the case for weird resolutions like 3/4 for example. (4/3 rotated 90°)
+ Tell me if you spot any difference on any resolution.
+ 
+ Something similar can be implemented for SDL 1.2 and Allegro 4 as well but that would be a hell lot slower. 
+ (Scaling would be done entirely in software)
+ Allegro5/SDL2 should be used for modern platforms while Allegro4/SDL1.2 should be used for old computers or video game consoles.
+ 
+ If you are making a PC game using my library, you can decide to give the users the choice to choose their renderer.
+ (Provided that you provide an executable for each different library)
+ If the SDL 1.2 version doesn't work for example, then he/she can try the Allegro4-based version instead.
+ 
+ This also mean that (almost) no users should be unable to run the game because the library used does not support their
+ exotic graphic card, how cool is that ? 
+
+------------------
+Version 1.21
+------------------
+ 
+ Version 1.21 is quick and small release that is even easier to use.
+ Before, you had to pass some defines to the compiler in order to properly support input for each platform. 
+ Fortunely, this is no longer needed.
+ 
+ This version also adds experimental support for GCW ZERO.
+ This port is using TRIPLE_BUFFERING by default and almost everything
+ is mapped to the buttons of the GCW Zero.
+
+ TRIPLE_BUFFERING should give some speedups so its cool :)
+ 
+-----------------
+Version 1.2
+-----------------
+
+This version is much more usable in my opinon.
+Hopefully you will like it more than previous versions because they were only good for moving picture on screen :d
+
+--------------------------------------------------------------
+!! Functions deprecated or changed !!
+--------------------------------------------------------------
+- Set_videomode() do nothing and is now deprecated. 
+	As of now, the only supported video mode is 320x240
+	Support for scaling to support higher displays is planned but it is not implemented right now.
+
+-  Play_GFX(int i, int channel_number) is now Play_GFX(int i)
+	Eventually, Play_GFX(int i, int channel_number) will be back
+	but it didn't work properly so i had to change it.
+
+-  UNCAPPED_FRAMERATE was removed from the TI-Nspire port
+
+---------------
+Features
+---------------
+- You only need to include the headers to use it now
+
+- Building is now fully functional on GNU/linux machines (building with warnings)
+
+- DEBUG messages are now provided. 
+	Pass -DDEBUG and/or -DDEBUG_CRAZY to the compiler to enable them
+
+- Now comes with provided with Makefile and Scons support
+
+----------------
+BUGFIXES
+----------------
+- Fix audio support for PC ports
+- Fix Update_video(). Framerate was uncapped for all ports but this is now set to 60 FPS by default
+- Fix the TI-nspire port, it should compile fine now
+
+----------
+Note 
+----------
+The 3DO should work well like before but i did not test it with this version.
+Tell me if it doesn't work
+
+-----------------
+Version 1.1
+-----------------
+
+- Added Copy_Image() function. 
+- Pink (RGB 255,0,255) is now transparent on all platforms.
+- Added more documentation. (Including functions.txt)
+- Fixed some bugs.
+
+-----------------
+Version 1.0
+-----------------
+
+First version with support working for 3DO and PC (SDL 1.2).

@@ -1,0 +1,17 @@
+CC = gcc
+
+CFLAGS = -Os -I./WRAPPER
+LDFLAGS = `sdl-config --cflags --libs` -lSDLmain -lSDL -lSDL_mixer
+DEFINES = -Wall -DDEBUG -DSOUND_ENABLED -DJOYSTICK
+DEFINES += -DSAVE
+OUTPUT = killminds_sdl12
+
+SOURCES = main.c WRAPPER/PC_SDL12.c
+OBJS = ${SOURCES:.c=.o}
+
+${OUTPUT}:${OBJS}
+	${CC} -o ${OUTPUT} ${SOURCES} ${CFLAGS} ${LDFLAGS} ${DEFINES} 
+	
+clean:
+	rm *.o
+	rm ${OUTPUT}

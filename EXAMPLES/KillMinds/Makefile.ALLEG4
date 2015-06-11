@@ -1,0 +1,16 @@
+CC = gcc
+
+CFLAGS = -Os -I./WRAPPER
+LDFLAGS = `allegro-config --libs`
+DEFINES = -Wall -DSOUND_ENABLED
+DEFINES += killminds_alleg4
+
+SOURCES = main.c WRAPPER/PC_ALLEG4.c
+OBJS = ${SOURCES:.c=.o}
+
+${OUTPUT}:${OBJS}
+	${CC} -o ${OUTPUT} ${SOURCES} ${CFLAGS} ${LDFLAGS} ${DEFINES} 
+	
+clean:
+	rm *.o
+	rm ${OUTPUT}

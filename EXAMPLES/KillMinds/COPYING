@@ -1,0 +1,96 @@
+GAMEBLABLA's LICENSE
+Version 3.1,  March 22rd 2015
+
+Copyright (C) 2015 Gameblabla <http://gameblabla.olympe.in>
+
+Everyone is permitted to copy and distribute verbatim or modified
+copies of this license document, and changing it is allowed as long
+as the name is changed.
+
+TERMS AND CONDITIONS
+
+The licensor grants you the rights to modify, redistribute, use and make Derivative works of the Program,
+in its entirety or in parts, provided that you comply to the terms and conditions as defined below. 
+The licensor shall also comply to the following terms and conditions as well.
+
+Section 1 - Definitions
+
+"License" are terms and conditions for use, reproduction and distribution as defined by this document.
+
+"This license" refers to this document.
+
+"Licensor" is the copyright owner or entity authorized by the copyright owner that is granting the License.
+
+"You" are the licensees. Licensees may be individuals or organizations.
+
+"They" refers to the licensor and/or the licensees.
+
+"Program" refers to any copyrightable work licensed under this license.
+
+"Software" is any set of machine-readable instructions that directs a computer's processor to perform specific operations.
+
+"Source code" is the human readable form of the Program and is the preferred form of the work for making modifications to it.
+
+"Deploy" is the redistribution of copies to the public.
+
+"Trademark" is a distinctive design, graphics, logo, symbols, words, or any combination thereof that uniquely identifies a firm and/or its goods or services, and gives it owner the legal rights to prevent the trademark's unauthorized use.
+
+"Patent" is a government license that gives the holder exclusive rights to a process, design or new invention for a designated period of time.
+
+"Derivative work" is a software that includes copyright-protected elements of the Program.
+
+Section 2 - Conditions
+
+a) The copyright notice of the Program shall be preserved.
+b) The Program and Derivative works shall not be patented in any way.
+c) If you deploy the Program and/or any Derivative works, you shall automatically grant all the rights to all your patents to the licensor and the licensees.
+d) The licensor and/or licensees may not engage legal action in any way against the licensor and/or the licensees because they violated trademarks and/or patents.
+e) The source code for the Program and Derivative works shall be deployed except for private use.
+f) The name of the licensor may not be used to endorse or promote products derived from this Program without specific prior written permission.
+g) The licensor and licensees shall not impose any further restrictions on the Program and Derivative works other than this license.
+h) Other than the GAMEBLABLA's LICENSE as allowed by Section 3, the licensor may not allow the licensees to follow any other terms and conditions.
+
+Section 3 - Revised versions of this license
+
+Gameblabla may publish revised and/or new versions of the GAMEBLABLA's LICENSE from time to time. 
+Each version is given a distinguishing version number.
+You have the option of following the terms and conditions either of that numbered version or of any later version published by Gameblabla. 
+If the Program does not specify a version number of the GAMEBLABLA's LICENSE, you may choose any version ever published by Gameblabla.
+If the Program does specify that only this version of the GAMEBLABLA's LICENSE can be used, you may choose only the version of the GAMEBLABLA's LICENSE used by the program .
+
+Section 4 - Warranty
+
+THE PROGRAM IS PROVIDED "AS IS" AND THE LICENSOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS PROGRAM INCLUDING 
+ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. 
+IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES 
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS PROGRAM.
+
+Section 5 - Termination
+
+The rights, trademarks and patents granted to you under this licence shall terminate automatically upon any breach by you of the terms of this licence.
+
+Section 6 - Interpretation
+
+To the extent possible, if any provision of this license is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. 
+If the provision cannot be reformed, it shall be severed from this license without affecting the enforceability of the remaining terms and conditions.
+
+
+END OF TERMS AND CONDITIONS
+
+
+How to apply this license to your works ?
+
+Attach the following notice to the source code of your Program and
+and put the GAMEBLABLA's LICENSE in a file called COPYING. (without any extensions)
+
+/*
+Copyright (C) <year>  <name of author>
+Licensed under the GAMEBLABLA's LICENSE version 3.1.
+See COPYING file for more details.
+If a COPYING file was not provided, you may obtain a copy of the License at
+	http://gameblabla.olympe.in/license/
+	
+This Program is distributed without WITHOUT ANY WARRANTY; 
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+See the GAMEBLABLA's LICENSE for more details.
+*/

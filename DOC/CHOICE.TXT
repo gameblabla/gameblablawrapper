@@ -1,0 +1,117 @@
+===========
+PC (SDL 1.2)
+===========
+
+This port supports joysticks and keyboards.
+Setting the UNIX define, you can have more accurate and better synchronisation.
+The platform needs to support it, though.
+Also, i'm setting the colorkey for all images because according to benchmarks,
+RLE encoded are faster than non-RLE images.
+I'm using Displayformat to further speed up things.
+The improvements can be noticeable on some platforms, especially on Atari Falcon.
+
+===========
+PC (SDL 2.0)
+===========
+
+For this port, i'm scalling it up to the whole screen.
+This looks quite good and it is using the graphic card for doing this.
+SDL 2.0 does consume 3x times more memory than SDL 1.2.
+On modern hardware however, this port should be preferred.
+
+===========
+PC (Allegro4)
+===========
+
+This port is the fastest and the one that consume the least memory on old computers.
+It also supports joysticks and was the first one to support them.
+In theory, it should be possible to port your games to DOS thanks to this port.
+I have not tested this however.
+
+Sometimes, the refreshing is not what it should be, this needs more testing.
+
+===========
+PC (Allegro5)
+===========
+
+This port is not working very well right now but it could be my computer.
+Compared to Allegro4, it's a real mess especially input.
+It's laggy , slow and hard to use.
+Allegro5 eats less memory than SDL 2.0 and SFML though so there's that.
+I still hate Allegro5 but if anyone want to fix it, i'll gladly take your patches.
+
+===========
+PC (SFML)
+===========
+
+SFML is a nice library but its bindings are severely undocumented.
+And unlike SDL 2.0 and Allegro5, there are no easy way to scale it to the whole screen.
+That's why it's (by default) in Window mode but you can fill the whole screen, it just doesn't work in fullscreen.
+Other than that, it works great.
+
+===========
+3DO
+===========
+
+This port works like the other ones though not it's not identical.
+You can't clear images in memory, or at least i don't know how.
+For now, (from version 5.0) it is only deleted from the display list.
+You need to load a new one to completely delete it.
+
+Another problem : PAL consoles.
+The screen resolution is much bigger and the framerate is slower.
+For the screen resolution, i used black borders.
+That framerate thingy is still not solved though but it could be done easily.
+
+It's just that i don't want programmers to accidently modify the FPS variable...
+
+======================
+DREAMCAST (Unfinished)
+======================
+
+For the Sega Dreamcast, i'm using SDL and several other libraries.
+I'm only using SDL for video, not even for input.
+For input, i'm using the input libraries provided by KOS.
+
+For sound, i'm using tremor and XingMP3.
+XingMP3 is GPL2+ thankfully so i don't have to change my license.
+
+Basically, i'm simply looking at the file extension and determing
+what library should i use for playing the music file.
+
+It is still incomplete though.
+
+First, i want this port to completely make use of the PowerVR by using ph3nom's libgl.
+Second, i badly need code to stream WAV file music.
+Working around the SPU reminds me of the 3DO,
+when i had a hard time working with sound until i have found a workaround.  (still pretty hacky)
+
+Anyways, it can be improved.
+
+===========
+GCW ZERO
+===========
+
+So you may be asking, why am i using SDL 1.2 and not SDL 2.0 ?
+Firstly, scalling is not needed because i only support one screen resolution anyways.
+Secondly, SDL 2.0 eats more memory than SDL 1.2.
+Lastly, SDL2.0's new features are useless for the Gameblabla's Wrapper on GCW Zero.
+
+This port can be improved though.
+I could use OpenGLES instead for graphics.
+
+===========
+TI NSPIRE
+===========
+
+This port uses nSDL by Hoffa.
+Sound is not supported on TI Nspire CX because it's a calculator. (i think that's obvious but some people still ask me this question)
+If nRGBlib supports loading external files, then i will probably use that library instead in the future because it's way faster than nSDL.
+
+===========
+GIZMONDO
+===========
+
+This port uses GizSDL.
+There's not really any alternative because most of other libraries on the web are gone, GONE.
+End-users should use the Firefly's Launcher too, as WinCE mode is kinda shitty.

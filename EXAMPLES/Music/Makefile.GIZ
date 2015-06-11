@@ -1,0 +1,17 @@
+CC = arm-cegcc-gcc
+
+CFLAGS = -Os -I/opt/cegcc/arm-cegcc/include/ -I/opt/cegcc/arm-cegcc/include/SDL/
+LDFLAGS =  -static -L/opt/cegcc/lib/ /opt/cegcc/lib/SDL_mixer.dll /opt/cegcc/lib/SDL.dll -lstdc++ -lm
+DEFINES = -DDEBUG 
+DEFINES += -DSOUND_ENABLED
+OUTPUT = music_example_giz.exe
+
+SOURCES = main.c WRAPPER/GIZ.c
+OBJS = ${SOURCES:.c=.o}
+
+${OUTPUT}:${OBJS}
+	${CC} -o ${OUTPUT} ${SOURCES} ${CFLAGS} ${LDFLAGS} ${DEFINES} 
+	
+clean:
+	rm *.o
+	rm ${OUTPUT}

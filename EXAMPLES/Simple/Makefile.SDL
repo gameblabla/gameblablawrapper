@@ -1,0 +1,18 @@
+CC = gcc
+
+CFLAGS = -Os -I./WRAPPER
+LDFLAGS = `sdl-config --cflags --libs` -lSDLmain -lSDL -lSDL_mixer -lSDL_image
+DEFINES = -DDEBUG 
+DEFINES += -DIMAGE_CODEC_ENABLED
+DEFINES += -DSOUND_ENABLED
+OUTPUT = example
+
+SOURCES = main.c WRAPPER/PC_SDL12.c
+OBJS = ${SOURCES:.c=.o}
+
+${OUTPUT}:${OBJS}
+	${CC} -o ${OUTPUT} ${SOURCES} ${CFLAGS} ${LDFLAGS} ${DEFINES} 
+	
+clean:
+	rm *.o
+	rm ${OUTPUT}

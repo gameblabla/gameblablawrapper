@@ -1,0 +1,32 @@
+______________________________________
+= Helicopt3rs - Clone of Swing copters =
+______________________________________
+
+Helicopt3rs is using the Gameblabla's Wrapper library, a library which supports rendering/sound/input for SDL 1.2, SDL 2.0, Allegro4, Allegro5 (experimental) and SFML 2.1.
+
+My computer :
+Intel Pentium Dual core 2Ghz
+Intel GMA 4500MHD
+Lubuntu 14.04 AMD64
+3 GB of RAM
+
+Except for Allegro 4.2, all the libraries were downloaded straight from the Ubuntu repository.
+I had to compile Allegro 4.2 from the source and I didn't changed the default FLAGS.
+This is the exact same game for all the versions.
+Color depth was 32 bits for all the versions.
+
+Memory test
+
+SDL 1.2      : 6.3    Megabytes
+SDL 2.0      : 21.1 Megabytes
+Allegro4   : 5.2    Megabytes
+Allegro5   : 20.0 Megabytes
+SFML 2.1  : 23.0 Megabytes
+
+CPU usage
+
+SDL 1.2      : 2%
+SDL 2.0      : 3%
+Allegro4   : 4%
+Allegro5   : 5%
+SFML 2.1  : 5%

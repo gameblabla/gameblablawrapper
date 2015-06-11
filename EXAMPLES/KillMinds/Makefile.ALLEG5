@@ -1,0 +1,17 @@
+CC = gcc
+
+CFLAGS = -Os -I/usr/include/ -I/usr/include/allegro5 -L/usr/lib -I./WRAPPER
+LDFLAGS = -lallegro -lallegro_image -lallegro_audio -lallegro_acodec
+DEFINES = -DSOUND_ENABLED -DRECENT_RENDER
+DEFINES += -DSAVE
+OUTPUT = killminds_alleg5
+
+SOURCES = main.c WRAPPER/PC_ALLEG5.c
+OBJS = ${SOURCES:.c=.o}
+
+${OUTPUT}:${OBJS}
+	${CC} -o ${OUTPUT} ${SOURCES} ${CFLAGS} ${LDFLAGS} ${DEFINES} 
+	
+clean:
+	rm *.o
+	rm ${OUTPUT}

@@ -1,0 +1,32 @@
+ 
+ROADMAP (TO DO LIST)
+
+- Improve Allegro5's keyboard reponsiveness (It is strangely laggy and has high latency)
+	Add Joystick support as well.
+
+- Test all unsupported platforms
+	Platforms like the GCW Zero are untested, which means that i don't even know if they compile well or not.
+
+- Improve Sprite support
+	Except for the 3DO, sprite tables need to be horizontal.
+	Improve this.
+
+- Have at least basic support for the Jaguar. 
+	Right now, this is not coming well and it will require some modifications to the original source code of your game to work.
+	Programming for 3DO is easier than on the Jag. (Sorry Jaguar fans out there !)
+
+- Have better PSP support
+	Using a better 2D library could be a better choice for better performence.
+
+- Improve Dreamcast's port
+	Use Ph3nom's libgl for graphics and add WAV stream support.
+	Improve sound support overall because it's somewhat broken.
+
+- Improve GCW Zero's port
+	Use OpenGLES instead for graphics.
+	
+- Support for the NEC PC-FX
+	Liberis works but is is still in its infancy and right now, it's very low level.
+	
+- Add Android/OUYA support
+	With virtual gamepad as well.

@@ -1,0 +1,17 @@
+CC = gcc
+
+CFLAGS = -Os -I./WRAPPER
+LDFLAGS = -lSDL2 -lSDL2_mixer -lSDL2_image
+DEFINES = -DDEBUG -DSOUND_ENABLED -DUNIX
+DEFINES += -DRECENT_RENDER
+OUTPUT = heli_sdl2
+
+SOURCES = main.c WRAPPER/PC_SDL2.c
+OBJS = ${SOURCES:.c=.o}
+
+${OUTPUT}:${OBJS}
+	${CC} -o ${OUTPUT} ${SOURCES} ${CFLAGS} ${LDFLAGS} ${DEFINES} 
+	
+clean:
+	rm *.o
+	rm ${OUTPUT}

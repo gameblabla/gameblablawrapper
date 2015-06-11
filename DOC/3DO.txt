@@ -1,0 +1,82 @@
+________________
+ABOUT THE 3DO
+________________
+
+If you want to make sure that your games will work properly on this 3DO when using the Gameblabla's Wrapper, 
+you need to know this :
+
+---------------------------------------------------------------------------
+1 - The 3DO only accepts CEL image formats
+---------------------------------------------------------------------------
+
+Of course , you could port libpng to it if you really feel you need it...
+
+Also, if you want to move big sprites or scroll backgrounds, make sure to split it into several parts.
+If you don't do this, your game will experience major slowdowns.
+
+(The 3DO Company also talked about this issue in their official FAQ)
+
+Tools are provided to convert BMP files to CEL format,
+look in the Graphics folder of the 3DO example.
+
+When you convert sprites with 2 or more frames, don't forget to tell the tool about their size.
+For example, the provided BMP file "Sprite.bmp" has 16 frames and each frame is 32x46.
+
+BMPTo3DOAnim 32 46 Sprite.bmp Sprite.cel
+
+-----------------------------------------------------------------------------------
+2 - The 3DO only accepts uncompressed AIFF files
+-----------------------------------------------------------------------------------
+
+It accepts the AIFC SDX2 format as well but it requires
+lots of CPU time. You don't want to use it.
+
+The 3DO has another annoying hardware limitation,
+its cache for audio files is only 32 kb. (except Music, which is streamed from the CD)
+WHAT THE HELL 3DO ?
+
+Anyways, you can play music but at the cost of one frame that will be freezed per second. 
+So on NTSC , 1 frame out of the 60 frames per second will be freezed.
+This can be noticeable , especially in-game.
+
+If you find the limitations too annoying , 
+you can disable audio support for the 3DO altogether.
+
+Edit the Makefile and change it from this :
+-d SOUND_ENABLED=1
+to this :
+-d SOUND_ENABLED=0
+
+Audacity (and others) can convert to AIFF uncompressed format with no problems.
+
+3DO allows two frequencies : 22050 hz and 44100 hz.
+They can be either Mono or Stereo and 8-bits or 16-bits.
+
+---------------------------------------------------------------------------------------------------------
+3 - A sprite can only be shown once and can't be shown on screen twice or more unless you use Copy_Image()
+---------------------------------------------------------------------------------------------------------
+
+The title says it all.
+The 3DO still has its roots to old video game consoles and it does not work like a fast blitter.
+Use Copy_Image() if you want to show the same image twice or more on screen.
+
+--------------------------------------
+4 - Other limitations...
+--------------------------------------
+
+The 3DO comes with 1 MB of video memory.
+While it seems big compared to consoles like the Megadrive,
+all the files are 16-bits uncompressed images files. 
+If you're not careful, you will quickly ran out of video memory.
+
+The 3DO also comes with 2MB of RAM, which is too big
+considering that sound files are never actually stored there 
+but in the tiny cache reserved for them.
+You shouldn't worry about the executable size of your program.
+(Unless you're porting Firefox to it, of course)
+
+Its resolution on NTSC TVs is 320x240 and on PAL,
+the resolution is 320x288.
+
+Because my library only officially supports 320x240,
+the game is centered on PAL TVs.

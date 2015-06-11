@@ -1,0 +1,135 @@
+==============
+LIST FUNCTIONS
+==============
+
+=============
+Init_video()
+=============
+Initialize the display.
+Depending on the platform, it can do other things too like changing the CPU clock on the PSP.
+This function must be called. (and only once)
+
+==============================================
+Load_Image(unsigned short a, char* directory)
+==============================================
+Load an image in memory. 
+'a' is the id of the image and 'directory' is where your image can be found.
+For the 3DO, it must be in CEL format. 
+For the other platform (unless the define IMAGE_CODEC_ENABLED is specified at compilation time or in the header file), 
+only BMPs are supported.
+
+Pink (RGB 255,0,255) is transparent on all platforms.
+
+===============================================
+Copy_Image(unsigned short a, unsigned short i)
+===============================================
+Copy an existing image already loaded in memory and assign another id to it.
+'a' is the id of the image already loaded in memory and 'i' will take the image of 'a'.
+
+==============================================
+Put_image(unsigned short a, short x, short y)
+==============================================
+Put an image on screen at x and y positions. (In pixels)
+
+===========================================================================================
+Put_sprite(unsigned short a, short x, short y, unsigned short w, unsigned short h, int f)
+============================================================================================
+Put a sprite on screen at x and y positions.
+'w' and 'h' are the size of one frame in pixel.
+'w' and 'h' are ignored on the 3DO because CELs files have that information.
+'f' is the frame that will be displayed.
+
+Note that only horizontal sprite tables are supported. (except on the 3DO where it doesn't matter)
+
+==================================================================================================
+Draw_Pixel(unsigned short x, unsigned short y, unsigned char R, unsigned char G, unsigned char B)
+==================================================================================================
+Put a pixel on screen. (in RGB format)
+
+=============
+Clear_screen()
+=============
+Clears the display.
+Does nothing on 3DO and Allegro 4
+
+==============
+Update_video()
+==============
+Update the screen.
+Needed in most cases and it is generally put in a loop.
+
+==========
+Controls()
+==========
+Detect input.
+Need to be in a loop.
+
+=========
+Clearing()
+=========
+Clears everything in memory.
+
+
+Note :
+To enable sound , the SOUND_ENABLED define must be defined either at compile time (-DSOUND_ENABLED)
+or in the api.h file like this : #define SOUND_ENABLED
+In the 3DO example , it is enabled by default.
+For PCs, SDL_mixer is required for sound support and same for the PSP.
+
+The 3DO has severe limitations for sound , see 3DO.txt.
+The TI nspire of course doesn't support sound.
+
+==========
+Init_sound()
+==========
+Initialiaze the sound system.
+Required for sound support.
+
+========================
+Load_Music(char* directory)
+========================
+Loads a music file in memory.
+'directory' should have the directory of the music file.
+For example : Load_Music("Sound/mymusic.wav");
+
+On PCs , WAVE , OGG and FLAC are supported.
+On PSP, only WAVE is properly supported.
+OGG files will reboot the PSP due to a bug in SDL_mixer for that platform.
+
+On the 3DO, only uncompressed AIFF format is supported.
+
+=====================
+Play_Music(char loop)
+=====================
+Plays the music.
+'loop' is how many times it is repeated. 
+-1 means it will never end.
+
+On the 3DO, the music must be in AIFF 16-bits 44100 hz Stereo format.
+If not , expect huge slowdowns and freezes !
+
+=============
+Clean_Music()
+=============
+Frees music from memory.
+Music is also stopped.
+
+===========================================
+Load_SFX(unsigned char i, char* directory)
+===========================================
+Loads a sound effect in memory.
+'i' is the id of the sound effects and 'directory' should have the directory of the music file.
+
+=========================
+Play_SFX(unsigned char i)
+=========================
+Plays a sound effect.
+'i' is the id of the sound effect.
+
+============
+Unload_SFX()
+============
+Erases all the sound effects into memory.
+Want to remove some but not all the sound effects ?
+Simply load a new one but with the same id instead.
+
