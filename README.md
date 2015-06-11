@@ -38,47 +38,6 @@ With the Gameblabla's Wrapper, you can :
 All of this with the same piece of code !
 The only differences are the limitations of each platform and library.
 
-===============
-TELL ME MORE 
-===============
-
-#include "API.h"
-#include "INPUT.h"
-
-int main ( void )
-{
-    short x,y;
-    x = 50;
-    y = 50;
-
-    Init_video();
-    Load_Image(1,"noname.bmp");
-
-    while (!done)
-    {
-    
-        Clear_screen();
-
-        Controls();
-
-		Put_image(1, x, y);
-
-		if (BUTTON.UP) y = y - 1;
-		if (BUTTON.DOWN) y = y + 1;
-		if (BUTTON.LEFT) x = x - 1;
-		if (BUTTON.RIGHT) x = x + 1;
- 		if (BUTTON.QUIT) done = 1;
-
-        Update_video();
-    }
-
-    Clearing();
-    return 0;
-}
-
-The code above run on all the supported platforms without any modifications.
-It should be fairly easy too for anyone to add support for other platforms too. 
-
 ==========
 LICENSE
 ==========
