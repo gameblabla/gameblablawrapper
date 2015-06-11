@@ -47,8 +47,7 @@ TELL ME MORE
 
 int main ( void )
 {
-    short x, y;
-
+    short x,y;
     x = 50;
     y = 50;
 
