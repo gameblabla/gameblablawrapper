@@ -5,7 +5,7 @@ extern char* game_name;
 
 extern void Init_video();
 
-extern void Load_Image(unsigned short a, char* directory);
+extern void Load_Image(unsigned short a, const char* directory);
 extern void Copy_Image(unsigned short a, unsigned short i);
 
 extern void Put_image(unsigned short a, short x, short y);
@@ -31,11 +31,11 @@ extern void Clearing();
 
 extern void Init_sound();
 
-extern void Load_Music(char* directory);
+extern void Load_Music(const char* directory);
 extern void Play_Music(char loop);
 extern void Clean_Music();
 
-extern void Load_SFX(unsigned char i, char* directory);
+extern void Load_SFX(unsigned char i, const char* directory);
 extern void Play_SFX(unsigned char i);
 extern void Unload_SFX();
 

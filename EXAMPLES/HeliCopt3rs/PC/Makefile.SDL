@@ -1,8 +1,8 @@
-CC = gcc
+CC = clang-3.6
 
-CFLAGS = -Os -I./WRAPPER
-LDFLAGS = `sdl-config --cflags --libs` -lSDLmain -lSDL -lSDL_mixer -lSDL_image
-DEFINES = -DDEBUG 
+CFLAGS = -Os -I./WRAPPER -Wall -Werror
+LDFLAGS = `sdl-config --cflags --libs` -lSDLmain -lSDL -lSDL_mixer -lSDL_image -lSDL_gfx
+DEFINES = -DDEBUG -DSCALING
 DEFINES += -DSOUND_ENABLED -DJOYSTICK
 OUTPUT = heli_sdl12
 

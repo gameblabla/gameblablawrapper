@@ -1,8 +1,8 @@
 CC = gcc
 
-CFLAGS = -Os -I./WRAPPER
-LDFLAGS = `sdl-config --cflags --libs` -lSDLmain -lSDL -lSDL_mixer
-DEFINES = -Wall -DDEBUG -DSOUND_ENABLED -DJOYSTICK
+CFLAGS = -g -Wall -Werror -I./WRAPPER
+LDFLAGS = `sdl-config --cflags --libs` -lSDLmain -lSDL -lSDL_mixer -lSDL_gfx
+DEFINES = -Wall -DDEBUG -DSOUND_ENABLED -DJOYSTICK -DSCALING
 DEFINES += -DSAVE
 OUTPUT = killminds_sdl12
 

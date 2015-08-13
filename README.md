@@ -1,5 +1,5 @@
 ====================================
-GAMEBLABLA'S WRAPPER VERSION 6.0 
+GAMEBLABLA'S WRAPPER VERSION 6.1
 ====================================
 
 For :
@@ -24,7 +24,7 @@ DESCRIPTION
 
 What the hell is this ?
 
-The Gameblabla's Wrapper is an ANSI C library whose goal is to simplify the development of cross-platform games.
+The Gameblabla's Wrapper is an ANSI C library, its goal is to simplify the development of cross-platform games.
 It was originally designed to enable cross-platform development without using an emulator for 3DO.
 It is now available for several platforms and it is suited for simple single-screen games. 
 (You can do scrolling games too but you will have to copy each tile individually in memory)

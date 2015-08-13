@@ -6,9 +6,9 @@ This port supports joysticks and keyboards.
 Setting the UNIX define, you can have more accurate and better synchronisation.
 The platform needs to support it, though.
 Also, i'm setting the colorkey for all images because according to benchmarks,
-RLE encoded are faster than non-RLE images.
+RLE encoded images are faster than non-RLE images.
 I'm using Displayformat to further speed up things.
-The improvements can be noticeable on some platforms, especially on Atari Falcon.
+These improvements can be noticeable on some platforms, especially on Atari Falcon.
 
 ===========
 PC (SDL 2.0)

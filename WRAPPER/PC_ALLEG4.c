@@ -92,7 +92,7 @@ void Init_video()
 	install_int_ex(ticker, BPS_TO_TIMER(FPS_VIDEO));
 }
 
-void Load_Image(unsigned short a, char* directory)
+void Load_Image(unsigned short a, const char* directory)
 {
 	#ifdef DEBUG
 		fprintf(stderr, "Clearing surface for image %d...\n", a);
@@ -362,7 +362,7 @@ void Clear_Images()
 			}
 		}
 
-		void Load_Music(char* directory)
+		void Load_Music(const char* directory)
 		{
 			Clean_Music();
 			music = load_wav(directory);
@@ -373,7 +373,7 @@ void Clear_Images()
 			play_sample(music, 128, 128, 1000, loop);
 		}
 
-		void Load_SFX(unsigned char i, char* directory)
+		void Load_SFX(unsigned char i, const char* directory)
 		{
 			#ifdef DEBUG
 				fprintf(stderr, "Loading sound effect %d (%s) in memory\n", i, directory);
@@ -422,7 +422,7 @@ void Clear_Images()
 		{
 		}
 
-		void Load_Music(char* directory)
+		void Load_Music(const char* directory)
 		{
 		}
 
@@ -430,7 +430,7 @@ void Clear_Images()
 		{
 		}
 
-		void Load_SFX(unsigned char i, char* directory)
+		void Load_SFX(unsigned char i, const char* directory)
 		{
 		}
 

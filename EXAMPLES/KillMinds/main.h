@@ -62,3 +62,6 @@ void Load_score();
 void Save_score();
 
 void Update_highscore();
+
+int rand(void);
+short rand_a_b(short a, short b);

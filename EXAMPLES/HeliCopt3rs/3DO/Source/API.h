@@ -5,12 +5,19 @@ extern char* game_name;
 
 extern void Init_video();
 
-extern void Load_Image(unsigned short a, char* directory);
+extern void Load_Image(unsigned short a, const char* directory);
 extern void Copy_Image(unsigned short a, unsigned short i);
 
 extern void Put_image(unsigned short a, short x, short y);
 extern void Put_sprite(unsigned short a, short x, short y, unsigned short w, unsigned short h, unsigned char f);
 
+extern void Draw_Pixel(unsigned short x, unsigned short y, unsigned char R, unsigned char G, unsigned char B);
+
+/* 
+ * Could cause problems on some platforms
+ * Report if that's the case
+ * 
+*/
 extern void Clear_Image(unsigned short a);
 extern void Clear_Images();
 
@@ -24,22 +31,25 @@ extern void Clearing();
 
 extern void Init_sound();
 
-extern void Load_Music(char* directory);
+extern void Load_Music(const char* directory);
 extern void Play_Music(char loop);
 extern void Clean_Music();
 
-extern void Load_GFX(unsigned char i, char* directory);
-extern void Play_GFX(unsigned char i);
-extern void Unload_GFX();
+extern void Load_SFX(unsigned char i, const char* directory);
+extern void Play_SFX(unsigned char i);
+extern void Unload_SFX();
 
-/*						 
+/*					
+	* 	 
 	WARNING : DANGEROUS !
     DON'T USE OR RELY ON THEM  
 	IF YOU ARE HEAVILY USING 
 	ALLEGRO 5.0 OR SDL 2.0 !
-					          */
+	* 
+*/
 
+/*
 extern void Faster_clearing(short x, short y, unsigned short w, unsigned short h);
 extern void Faster_update(short x, short y, short w, short h);
-
+*/
 

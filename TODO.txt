@@ -1,6 +1,9 @@
  
 ROADMAP (TO DO LIST)
 
+- Provide functions for text drawing
+	'nuff said.
+
 - Improve Allegro5's keyboard reponsiveness (It is strangely laggy and has high latency)
 	Add Joystick support as well.
 

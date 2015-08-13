@@ -343,7 +343,7 @@ void Reset_game()
 
 void Gameplay()
 {
-unsigned char i;
+	unsigned char i;
 
 	if (begin == 0 && death == 0 && A_state > 2) 
 	{
@@ -405,7 +405,7 @@ unsigned char i;
 
 void Collisions()
 {
-unsigned char i;
+	unsigned char i;
 
 	//Handle Collisions between 'barres' and the 'Player'
 	for (i=0; i<2; i++)
@@ -467,7 +467,7 @@ unsigned char i;
 
 void Platforms_manage()
 {
-unsigned char i;
+	unsigned char i;
 	
 	if (begin == 1) for (i=0; i<2; i++) platforme_y[i] = platforme_y[i] + 1;
 	
@@ -498,7 +498,7 @@ void Show_Bottom_back()
 
 void Show_Clouds()
 {
-unsigned char i;
+	unsigned char i;
 
 	Put_image(7, cloud_x[0], cloud_y[0]);
 	Put_image(19, cloud_x[1], cloud_y[1]);
@@ -593,7 +593,8 @@ void Show_Player()
 	
 }
 
-void Move_player(){
+void Move_player()
+{
 	
 	if (Facing_player == 0)
 	{
@@ -659,7 +660,8 @@ void Move_player(){
 	
 }
 
-void A_button(){
+void A_button()
+{
 	if (A_state == 0) // A not pressed , detect if A pressed
 	{ 
 		if (BUTTON.A==1)
@@ -697,7 +699,8 @@ void A_button(){
 	}
 }
 
-void Trigger_Death(){
+void Trigger_Death()
+{
 	if (death == 0 && begin == 1)
 	{
 		play_smack();
@@ -708,6 +711,7 @@ void Trigger_Death(){
 
 
 // Used for random coordinate for the clouds
-short rand_a_b(short a, short b){
+short rand_a_b(short a, short b)
+{
     return rand()%(b-a) +a;
 }

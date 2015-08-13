@@ -110,7 +110,7 @@ void Init_video()
 	*/
 }
 
-void Load_Image(unsigned short a, char* directory)
+void Load_Image(unsigned short a, const char* directory)
 {
 	/*
 		* Put everything here for loading images from a directory.
@@ -415,7 +415,7 @@ void Clear_Images()
 			 */
 		}
 
-		void Load_Music(char* directory)
+		void Load_Music(const char* directory)
 		{
 			/*
 			 * Loading music in memory.
@@ -443,7 +443,7 @@ void Clear_Images()
 			 */
 		}
 
-		void Load_SFX(unsigned char i, char* directory)
+		void Load_SFX(unsigned char i, const char* directory)
 		{
 			/*
 			 * Loading a new sound effect from a directory.
@@ -486,7 +486,7 @@ void Clear_Images()
 		{
 		}
 
-		void Load_Music(char* directory)
+		void Load_Music(const char* directory)
 		{
 		}
 
@@ -494,7 +494,7 @@ void Clear_Images()
 		{
 		}
 
-		void Load_SFX(unsigned char i, char* directory)
+		void Load_SFX(unsigned char i, const char* directory)
 		{
 		}
 

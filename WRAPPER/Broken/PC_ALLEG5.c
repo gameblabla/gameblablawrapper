@@ -16,7 +16,7 @@
 /*                
  * ALLEGRO 5 Port is functionnal but still unfinished :
  * Input is laggy (at least on Ubuntu 14.04), no idea why. (perhaps packages are broken)
- * The scalling code is 'hacky'. 
+ * The scaling code is 'hacky'. 
  * Using a float should work, right ?
  * Well with Allegro5, it doesn't.
  * 
@@ -121,7 +121,7 @@ void Init_video()
 		
 		scaleH = windowHeight;
 	}
-	/* This is necessary for handling properly Vertical screens */
+	/* This is necessary for handling properly Vertical screens, not tested */
 	else
 	{
 		for(i=0;scaleW<windowWidth+1;i++)
@@ -145,7 +145,7 @@ void Init_video()
     al_start_timer(timer);
 }
 
-void Load_Image(unsigned short a, char* directory)
+void Load_Image(unsigned short a, const char* directory)
 {
 	al_destroy_bitmap(sprites_img[a]);
 	
@@ -387,7 +387,7 @@ void Clear_Images()
 		}
 	}
 
-	void Load_Music(char* directory)
+	void Load_Music(const char* directory)
 	{
 		Clean_Music();
 		music = al_load_sample(directory);
@@ -409,7 +409,7 @@ void Clear_Images()
 		al_play_sample(music, 1.0, 0.0, 1.0, aa, NULL);
 	}
 
-	void Load_SFX(unsigned char i, char* directory)
+	void Load_SFX(unsigned char i, const char* directory)
 	{
 		#ifdef DEBUG
 			fprintf(stderr, "Loading sound effect %d (%s) in memory\n", i, directory);
@@ -458,7 +458,7 @@ void Clear_Images()
 		{
 		}
 
-		void Load_Music(char* directory)
+		void Load_Music(const char* directory)
 		{
 		}
 
@@ -466,7 +466,7 @@ void Clear_Images()
 		{
 		}
 
-		void Load_SFX(unsigned char i, char* directory)
+		void Load_SFX(unsigned char i, const char* directory)
 		{
 		}
 

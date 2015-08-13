@@ -1,4 +1,19 @@
 ---------------------
+Version 6.1
+---------------------
+
+Scaling for the SDL1.2 port is now supported through SDL_gfx,
+simply set the SCALING define and link it with -lSDL_gfx.
+
+Load_Image, Load_SFX and Load_Music are now taking char constants,
+make sure to update your code to take this in account.
+
+Fixed Dreamcast's port sound support,
+support for sound effects is still spoty though...
+
+Some fixing here and there i forgot...
+
+---------------------
 Version 6.0
 ---------------------
 
@@ -26,9 +41,9 @@ The new sound function became Load_SFX, Play_SFX and Unload_SFX.
 Before, they were all called Load_GFX, Play_GFX and Unload_GFX.
 This was a mistake in history and this is now fixed.
 
-Some code cleanup and some bugs were fixed. (don't remember which)
+Some code cleanup and some bugs were fixed.
 
-Added support for the Dreamcast version, Music WAV files are not supported yet.
+Added support for the Dreamcast version, music WAV files are not supported yet.
 
 ---------------------
 Version 5.0
@@ -139,27 +154,26 @@ Version 3.0
   New functions
  --------------------------------------------------------------
 
-	- Sync_refresh()
-	Sync with the FrameRate without refreshing the screen.
+- Sync_refresh()
+Sync with the FrameRate without refreshing the screen.
 	
-	- Clear_Images();
-	Clears all the Images in Memory.
+- Clear_Images();
+Clears all the Images in Memory.
 	
-	-----------------------------------------------------------------------------------------------------
-	  DANGEROUS - DON'T USE WITH ALLEGRO 5 / SDL 2.0 !
-	-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+DANGEROUS - DON'T USE WITH ALLEGRO 5 / SDL 2.0 !
+-----------------------------------------------------------------------------------------------------
+
+- Faster_clearing()
+Clears only a certain specified area.
 	
-	- Faster_clearing()
-	Clears only a certain specified area.
+- Faster_update()
+Update only a certain specified area.
+Very effective on Atari Falcon using SDL.
 	
-	- Faster_update()
-	Update only a certain specified area.
-	Very effective on Atari Falcon using SDL.
-	
-	
- --------------------------------------------------------------
-  Notes
- --------------------------------------------------------------
+--------------------------------------------------------------
+ Notes
+--------------------------------------------------------------
 
   For Version 3.0 and Version 2.0, speed was greatly improved
   thanks to my efforts trying to port my secret project on Atari Falcon. (Specially Version 3.0)
@@ -170,10 +184,9 @@ Version 3.0
   with Allegro 5/ SDL 2.0 because they are constanly refreshing the screen
   so careful when you are coding your game. (or just don't use them)
 	
-	
------------------
+-------------------
 Version 2.0
------------------
+-------------------
  
  --------------------------------------------------------------
  !! Functions deprecated or changed !!

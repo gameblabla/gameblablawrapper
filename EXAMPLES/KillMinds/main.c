@@ -583,6 +583,14 @@ void calcul_score()
 	score_showed[6] = score % 10;
 }
 
+static unsigned long int next = 1;
+
+int rand(void)
+{
+    next = next * 1103515245 + 12345;
+    return (unsigned int)(next/65536) % 32768;
+}
+
 short rand_a_b(short a, short b)
 {
     return rand()%(b-a) +a;

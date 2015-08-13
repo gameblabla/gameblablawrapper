@@ -10,7 +10,7 @@ Depending on the platform, it can do other things too like changing the CPU cloc
 This function must be called. (and only once)
 
 ==============================================
-Load_Image(unsigned short a, char* directory)
+Load_Image(unsigned short a, const char* directory)
 ==============================================
 Load an image in memory. 
 'a' is the id of the image and 'directory' is where your image can be found.
@@ -36,10 +36,10 @@ Put_sprite(unsigned short a, short x, short y, unsigned short w, unsigned short 
 ============================================================================================
 Put a sprite on screen at x and y positions.
 'w' and 'h' are the size of one frame in pixel.
-'w' and 'h' are ignored on the 3DO because CELs files have that information.
+'w' and 'h' are ignored on 3DO because CELs files have that information.
 'f' is the frame that will be displayed.
 
-Note that only horizontal sprite tables are supported. (except on the 3DO where it doesn't matter)
+Note that only horizontal sprite tables are supported. (except on 3DO)
 
 ==================================================================================================
 Draw_Pixel(unsigned short x, unsigned short y, unsigned char R, unsigned char G, unsigned char B)
@@ -50,13 +50,13 @@ Put a pixel on screen. (in RGB format)
 Clear_screen()
 =============
 Clears the display.
-Does nothing on 3DO and Allegro 4
+Does nothing on 3DO but you should still use it for compatibility.
 
 ==============
 Update_video()
 ==============
 Update the screen.
-Needed in most cases and it is generally put in a loop.
+It can generally be found inside of a loop.
 
 ==========
 Controls()
@@ -86,7 +86,7 @@ Initialiaze the sound system.
 Required for sound support.
 
 ========================
-Load_Music(char* directory)
+Load_Music(const char* directory)
 ========================
 Loads a music file in memory.
 'directory' should have the directory of the music file.
@@ -115,7 +115,7 @@ Frees music from memory.
 Music is also stopped.
 
 ===========================================
-Load_SFX(unsigned char i, char* directory)
+Load_SFX(unsigned char i, const char* directory)
 ===========================================
 Loads a sound effect in memory.
 'i' is the id of the sound effects and 'directory' should have the directory of the music file.

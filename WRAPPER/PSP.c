@@ -86,7 +86,7 @@ void Init_video()
 	  screen = SDL_SetVideoMode(320, 240, 16, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN);
 }
 
-void Load_Image(unsigned short a, char* directory)
+void Load_Image(unsigned short a, const char* directory)
 {
 	SDL_Surface *tmp;
 	
@@ -408,7 +408,7 @@ void Clear_Images()
 			}
 		}
 
-		void Load_Music(char* directory)
+		void Load_Music(const char* directory)
 		{
 			#ifdef DEBUG
 				fprintf(stderr, "Load music in memory\n");
@@ -435,7 +435,7 @@ void Clear_Images()
 			}
 		}
 
-		void Load_SFX(unsigned char i, char* directory)
+		void Load_SFX(unsigned char i, const char* directory)
 		{
 			#ifdef DEBUG
 				fprintf(stderr, "Load sound effect %d (%s) in memory\n", i, directory);
@@ -486,7 +486,7 @@ void Clear_Images()
 		{
 		}
 
-		void Load_Music(char* directory)
+		void Load_Music(const char* directory)
 		{
 		}
 
@@ -494,7 +494,7 @@ void Clear_Images()
 		{
 		}
 
-		void Load_SFX(unsigned char i, char* directory)
+		void Load_SFX(unsigned char i, const char* directory)
 		{
 		}
 
