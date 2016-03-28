@@ -215,106 +215,19 @@ void Draw_Pixel(unsigned short x, unsigned short y, unsigned char R, unsigned ch
 void Controls()
 {
 		poll_joystick();
-        
-		if (key[Buttons_UP] || joy[0].stick[0].axis[1].d1)	
-		{
-			BUTTON.UP = 1;	
-		}
-		else
-		{
-			BUTTON.UP = 0;	
-		}
-		
-		if (key[Buttons_DOWN] || joy[0].stick[0].axis[1].d2)	
-		{
-			BUTTON.DOWN = 1;	
-		}
-		else
-		{
-			BUTTON.DOWN = 0;	
-		}
-		
-		if (key[Buttons_LEFT] || joy[0].stick[0].axis[0].d1)	
-		{
-			BUTTON.LEFT = 1;	
-		}
-		else
-		{
-			BUTTON.LEFT = 0;	
-		}
-		
-		if (key[Buttons_RIGHT] || joy[0].stick[0].axis[0].d2)	
-		{
-			BUTTON.RIGHT = 1;	
-		}
-		else
-		{
-			BUTTON.RIGHT = 0;	
-		}
 
-		if (key[Buttons_A] || joy[0].button[Joypad_A].b)	
-		{
-			BUTTON.A = 1;	
-		}
-		else
-		{
-			BUTTON.A = 0;	
-		}
+		BUTTON.UP = (key[Buttons_UP] || joy[0].stick[0].axis[1].d1)	 ? 1 : 0;
+		BUTTON.DOWN = (key[Buttons_DOWN] || joy[0].stick[0].axis[1].d2)	 ? 1 : 0;
+		BUTTON.LEFT = (key[Buttons_LEFT] || joy[0].stick[0].axis[0].d1)	 ? 1 : 0;
+		BUTTON.RIGHT = (key[Buttons_RIGHT] || joy[0].stick[0].axis[0].d2)	 ? 1 : 0;
 		
-		if (key[Buttons_B] || joy[0].button[Joypad_B].b)
-		{
-			BUTTON.B = 1;	
-		}
-		else
-		{
-			BUTTON.B = 0;	
-		}
-		
-		if (key[Buttons_C] || joy[0].button[Joypad_C].b)
-		{
-			BUTTON.C = 1;	
-		}
-		else
-		{
-			BUTTON.C = 0;	
-		}
-		
-		if (key[Buttons_D] || joy[0].button[Joypad_D].b)	
-		{
-			BUTTON.D = 1;	
-		}
-		else
-		{
-			BUTTON.D = 0;	
-		}
-		
-		if (key[Buttons_START] || joy[0].button[Joypad_START].b)	
-		{
-			BUTTON.START = 1;	
-		}
-		else
-		{
-			BUTTON.START = 0;	
-		}
-			
-		if (key[Buttons_SELECT] || joy[0].button[Joypad_SELECT].b)	
-		{
-			BUTTON.SELECT = 1;	
-		}
-		else
-		{
-			BUTTON.SELECT = 0;	
-		}
-		
-		if (key[Buttons_QUIT])	
-		{
-			BUTTON.QUIT = 1;	
-		}
-		else
-		{
-			BUTTON.QUIT = 0;	
-		}
-		
+		BUTTON.A = (key[Buttons_A] || joy[0].button[Joypad_A].b) ? 1 : 0;
+		BUTTON.B = (key[Buttons_B] || joy[0].button[Joypad_B].b) ? 1 : 0;
+		BUTTON.C = (key[Buttons_C] || joy[0].button[Joypad_C].b) ? 1 : 0;
+		BUTTON.D = (key[Buttons_D] || joy[0].button[Joypad_D].b) ? 1 : 0;
+		BUTTON.START = (key[Buttons_START] || joy[0].button[Joypad_START].b)	 ? 1 : 0;
+		BUTTON.SELECT = (key[Buttons_SELECT] || joy[0].button[Joypad_SELECT].b)	 ? 1 : 0;
+		BUTTON.QUIT = key[Buttons_QUIT] ? 1 : 0;
 }
 
 void Clear_Image(unsigned short a)

@@ -3,15 +3,13 @@
 // Released free of any licenses
 // Credit would be appreciated, but not required.
 
-#include "stdio.h"
-#include "string.h"
+#include <string.h>
 
-#include "controlpad.h"
-#include "event.h"
-#include "mem.h"
+#include <controlpad.h>
+#include <event.h>
+#include <mem.h>
 
-#include "Defines.h"
-#include "System.h"
+#include "system.h"
 
 // Number of control pads to use
 static const int	sNumControlPads	= 2;

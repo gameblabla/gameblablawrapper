@@ -258,6 +258,18 @@ void Controls()
 			done = 1;
 		}
 
+		BUTTON.QUIT = 0;	
+		BUTTON.LEFT = 0;	
+		BUTTON.RIGHT = 0;	
+		BUTTON.UP = 0;	
+		BUTTON.DOWN = 0;	
+		BUTTON.A = 0;	
+		BUTTON.B = 0;
+		BUTTON.C = 0;	
+		BUTTON.D = 0;		
+		BUTTON.START = 0;	
+		BUTTON.SELECT = 0;
+
 		if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
 		{
 			switch(ev.keyboard.keycode)
@@ -297,47 +309,6 @@ void Controls()
 				break;	
 			}
 		}
-		
-		if(ev.type == ALLEGRO_EVENT_KEY_UP)
-		{
-			switch(ev.keyboard.keycode)
-			{
-				case Buttons_QUIT:
-					BUTTON.QUIT = 0;	
-					break;
-				case Buttons_LEFT:
-					BUTTON.LEFT = 0;	
-					break;
-				case Buttons_RIGHT:
-					BUTTON.RIGHT = 0;	
-					break;
-				case Buttons_UP:
-					BUTTON.UP = 0;	
-					break;
-				case Buttons_DOWN:
-					BUTTON.DOWN = 0;	
-					break;
-				case Buttons_A:
-					BUTTON.A = 0;	
-					break;
-				case Buttons_B:
-					BUTTON.B = 0;
-					break;	
-				case Buttons_C:
-					BUTTON.C = 0;	
-					break;
-				case Buttons_D:
-					BUTTON.D = 0;	
-					break;	
-				case Buttons_START:	
-					BUTTON.START = 0;	
-					break;
-				case Buttons_SELECT:
-					BUTTON.SELECT = 0;	
-					break;	
-			}
-		}
-
 
 }
 

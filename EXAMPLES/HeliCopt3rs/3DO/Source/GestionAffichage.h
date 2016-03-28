@@ -61,6 +61,7 @@ bool Screen_format();
 
 void setpixel(int x, int y, int RED, int GREEN, int BLUE);
 void fill_rectangle(int x, int y, int size_rect, int RED, int GREEN, int BLUE);
+void fill_rectangle_norgb(int x, int y, int size_rect, int couleur);
 
 /*
 void fill_rectangle(unsigned short x, unsigned short y, unsigned short size_rect, unsigned char R, unsigned char G, unsigned char B);

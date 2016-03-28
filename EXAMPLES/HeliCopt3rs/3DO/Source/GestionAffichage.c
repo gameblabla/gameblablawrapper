@@ -492,6 +492,21 @@ void fill_rectangle(int x, int y, int size_rect, int RED, int GREEN, int BLUE)
 	FillRect(pointeurEcranContexte->sc_BitmapItems[ecranCourant], &contexteGraphique, &rectangle);
 }
 
+void fill_rectangle_norgb(int x, int y, int size_rect, int couleur)
+{	
+	GrafCon contexteGraphique;
+	Rect rectangle;
+	
+	SetFGPen(&contexteGraphique, couleur);
+
+	rectangle.rect_XLeft=x;
+	rectangle.rect_YTop=y;
+	rectangle.rect_XRight=x+size_rect-1;
+	rectangle.rect_YBottom=y+size_rect-1;
+	
+	FillRect(pointeurEcranContexte->sc_BitmapItems[ecranCourant], &contexteGraphique, &rectangle);
+}
+
 bool Screen_format()
 {
 	if (*pointeurEcranFormat==1)

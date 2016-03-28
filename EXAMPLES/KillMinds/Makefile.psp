@@ -1,0 +1,21 @@
+TARGET 		= killminds
+
+CFLAGS 		= -O2 -I/usr/local/pspdev/psp/include/SDL -I./WRAPPER 
+ASFLAGS 		= $(CFLAGS)
+
+OBJS 			= main.o WRAPPER/PSP.o
+
+PSPSDK		= $(shell psp-config --pspsdk-path)
+PSPBIN 		= $(PSPSDK)/../bin
+
+LIBS			= -lSDL -lvorbisfile -logg -lsmpeg -lvorbis -lGL -lz -lm -lpspirkeyb -lpsppower -lpspgu -l psphprm -lpspaudio -lpspvfpu -lpsprtc
+
+BUILD_PRX 	= 1
+
+EXTRA_TARGETS	= EBOOT.PBP
+PSP_EBOOT_TITLE = Killminds
+PSP_EBOOT_ICON	= 
+
+DEFAULT_CFLAGS = $(shell $(SDL_CONFIG) --cflags)
+
+include $(PSPSDK)/lib/build.mak

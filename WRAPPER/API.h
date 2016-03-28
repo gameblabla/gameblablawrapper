@@ -13,6 +13,8 @@ extern void Put_sprite(unsigned short a, short x, short y, unsigned short w, uns
 
 extern void Draw_Pixel(unsigned short x, unsigned short y, unsigned char R, unsigned char G, unsigned char B);
 
+extern void Draw_Rect(unsigned short x, unsigned short y, unsigned short width, unsigned char R, unsigned char G, unsigned char B);
+
 /* 
  * Could cause problems on some platforms
  * Report if that's the case

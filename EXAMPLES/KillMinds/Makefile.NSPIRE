@@ -1,43 +1,16 @@
-DEBUG = FALSE
+CC = nspire-gcc
 
-GCC = nspire-gcc
-AS  = nspire-as
-GXX = nspire-g++
-LD  = nspire-ld
-GENZEHN = genzehn
+CFLAGS = -Os -Wall -Werror -I./WRAPPER -I.
+LDFLAGS = -flto
+DEFINES = -DSAVE
+OUTPUT = killminds
 
-GCCFLAGS = -Wall -W -marm -mcpu=arm926ej-s -DSAVE
-LDFLAGS = -Wl,--as-needed
-ZEHNFLAGS = --name "killminds"
+SOURCES = main.c WRAPPER/NSPIRE.c n2DLib.c
+OBJS = ${SOURCES:.c=.o}
 
-GCCFLAGS += -Os -I./WRAPPER
-
-OBJS = main.c WRAPPER/NSPIRE.c
-EXE = killminds
-DISTDIR = .
-vpath %.tns $(DISTDIR)
-vpath %.elf $(DISTDIR)
-
-all: $(EXE).prg.tns
-
-%.o: %.c
-	$(GCC) $(GCCFLAGS) -c $<
-
-%.o: %.cpp
-	$(GXX) $(GCCFLAGS) -c $<
+${OUTPUT}:${OBJS}
+	${CC} -o ${OUTPUT} ${SOURCES} ${CFLAGS} ${LDFLAGS} ${DEFINES} 
 	
-%.o: %.S
-	$(AS) -c $<
-
-$(EXE).elf: $(OBJS)
-	mkdir -p $(DISTDIR)
-	$(LD) $^ -o $(DISTDIR)/$@ $(LDFLAGS)
-
-$(EXE).tns: $(EXE).elf
-	$(GENZEHN) --input $(DISTDIR)/$^ --output $(DISTDIR)/$@ $(ZEHNFLAGS)
-
-$(EXE).prg.tns: $(EXE).tns
-	make-prg $(DISTDIR)/$^ $(DISTDIR)/$@
-
 clean:
-	rm -f *.o $(DISTDIR)/$(EXE).tns $(DISTDIR)/$(EXE).elf $(DISTDIR)/$(EXE).prg.tns
+	rm *.o
+	rm ${OUTPUT}

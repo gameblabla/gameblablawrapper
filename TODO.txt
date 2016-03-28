@@ -2,7 +2,7 @@
 ROADMAP (TO DO LIST)
 
 - Provide functions for text drawing
-	'nuff said.
+	'nuff said. (The problem is that i still don't know how to use the same bitmap several time without loading a second copy...)
 
 - Improve Allegro5's keyboard reponsiveness (It is strangely laggy and has high latency)
 	Add Joystick support as well.

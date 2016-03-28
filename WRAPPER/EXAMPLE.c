@@ -245,13 +245,7 @@ void Controls()
 {
 	/*
 	 * Input detection should be done here.
-	 * Basically, if UP button is pressed
-	 * then turn BUTTON.UP to one.
-	 * If not, then turn it to 0.
-	 * If the console/PC has joystick support,
-	 * they should map to the four directions
-	 * of a D-PAD. 
-	 * Have a look at the SDL 1.2 port for reference.
+	 * Have a look at the SDL 1.2 port for more details.
 	 * 
 	 * Below is the content of the Controls function
 	 * taken from the PSP port
@@ -260,96 +254,18 @@ void Controls()
 /*
 		SceCtrlData pad;
 		sceCtrlPeekBufferPositive(&pad,1);
-
-		if (pad.Buttons & Buttons_UP)	
-		{
-			BUTTON.UP = 1;	
-		}
-		else
-		{
-			BUTTON.UP = 0;	
-		}
 		
-		if (pad.Buttons & Buttons_DOWN)	
-		{
-			BUTTON.DOWN = 1;	
-		}
-		else
-		{
-			BUTTON.DOWN = 0;	
-		}
+		BUTTON.UP 		= (pad.Buttons & Buttons_UP)	 ? 1 : 0;
+		BUTTON.DOWN 	= (pad.Buttons & Buttons_DOWN)	 ? 1 : 0;
+		BUTTON.LEFT 	= (pad.Buttons & Buttons_LEFT)	 ? 1 : 0;
+		BUTTON.RIGHT 	= (pad.Buttons & Buttons_RIGHT)  ? 1 : 0;
 		
-		if (pad.Buttons & Buttons_LEFT)	
-		{
-			BUTTON.LEFT = 1;	
-		}
-		else
-		{
-			BUTTON.LEFT = 0;	
-		}
-		
-		if (pad.Buttons & Buttons_RIGHT)	
-		{	
-			BUTTON.RIGHT = 1;	
-		}
-		else
-		{
-			BUTTON.RIGHT = 0;	
-		}
-
-		if (pad.Buttons & Buttons_A)	
-		{
-			BUTTON.A = 1;	
-		}
-		else
-		{
-			BUTTON.A = 0;	
-		}
-		
-		if (pad.Buttons & Buttons_B)	
-		{
-			BUTTON.B = 1;	
-		}
-		else
-		{
-			BUTTON.B = 0;	
-		}
-		
-		if (pad.Buttons & Buttons_C)	
-		{
-			BUTTON.C = 1;	
-		}
-		else
-		{
-			BUTTON.C = 0;	
-		}
-		
-		if (pad.Buttons & Buttons_D)	
-		{
-			BUTTON.D = 1;	
-		}
-		else
-		{
-			BUTTON.D = 0;	
-		}
-		
-		if (pad.Buttons & Buttons_START)	
-		{
-			BUTTON.START = 1;	
-		}
-		else
-		{
-			BUTTON.START = 0;	
-		}
-			
-		if (pad.Buttons & Buttons_SELECT)	
-		{
-			BUTTON.SELECT = 1;	
-		}
-		else
-		{
-			BUTTON.SELECT = 0;	
-		}
+		BUTTON.A 		= (pad.Buttons & Buttons_A) ? 1 : 0;
+		BUTTON.B 		= (pad.Buttons & Buttons_B) ? 1 : 0;
+		BUTTON.C 		= (pad.Buttons & Buttons_C) ? 1 : 0;
+		BUTTON.D 		= (pad.Buttons & Buttons_D) ? 1 : 0;
+		BUTTON.START 	= (pad.Buttons & Buttons_START) ? 1 : 0;
+		BUTTON.SELECT 	= (pad.Buttons & Buttons_SELECT) ? 1 : 0;
 */
 }
 

@@ -1,4 +1,14 @@
 ---------------------
+Version 6.2
+---------------------
+
+This version should improve speed as the awful input detection code is now shorter and faster.
+The TI-Nspire CX port was greatly improved and it uses n2DLib for graphics instead of nSDL.
+A special version n2DLib is provided, as the stock one will not work.
+
+(The 3DO version might not compile btw but it should)
+
+---------------------
 Version 6.1
 ---------------------
 

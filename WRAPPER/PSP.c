@@ -13,6 +13,17 @@
    limitations under the License.
 */
 
+#include <pspkernel.h>
+#include <pspctrl.h>
+#include <pspdisplay.h>
+#include <psppower.h>
+
+/* Define the module info section */
+PSP_MODULE_INFO("GAMEBLABLA", 0, 1, 1);
+PSP_HEAP_SIZE_MAX();
+/* Define the main thread's attribute value (optional) */
+PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
+
 #include <stdlib.h>
 #include <SDL/SDL.h>
 
@@ -22,7 +33,6 @@
 #ifdef SOUND_ENABLED
 	#include <SDL/SDL_mixer.h>
 	#define MAX_SFX 16
-	
 	int music;
 	int gfx_id[32];
 #endif
@@ -59,21 +69,10 @@ int SetupCallbacks(void);
 #define Buttons_SELECT PSP_CTRL_SELECT
 #define Buttons_QUIT 0
 
+
 void msleep(unsigned char milisec)
 {
-	#ifdef UNIX 
-		struct timespec req={0};
-		time_t sec=(unsigned short)(milisec/1000);
-		
-		milisec=milisec-(sec*1000);
-		req.tv_sec=sec;
-		req.tv_nsec=milisec*1000000L;
-		
-		while(nanosleep(&req,&req)==-1)
-		continue;
-	#else
-		SDL_Delay(milisec);
-	#endif
+	SDL_Delay(milisec);
 }
 
 void Init_video()
@@ -90,42 +89,18 @@ void Load_Image(unsigned short a, const char* directory)
 {
 	SDL_Surface *tmp;
 	
-	#ifdef DEBUG
-		fprintf(stderr, "Clearing surface for image %d...\n", a);
-	#endif
-	
 	if (sprites_img[a] != NULL)
 	{
 		SDL_FreeSurface(sprites_img[a]);
 	}
-	
-	#ifdef DEBUG
-		fprintf(stderr, "Trying to load image %d (%s)...\n", a, directory);
-	#endif
 
 	#ifdef IMAGE_CODEC_ENABLED
 		tmp = IMG_Load(directory);
 	#else
 		tmp = SDL_LoadBMP(directory);
 	#endif
-	
-	#ifdef DEBUG
-		fprintf(stderr, "Loading image %d (%s) was successful\n", a, directory);
-	#endif
-	
-	#ifdef DEBUG
-		fprintf(stderr, "Trying to set color for transparency on image %d\n", a);
-	#endif
-	
-	SDL_SetColorKey(tmp, (SDL_SRCCOLORKEY | SDL_RLEACCEL), SDL_MapRGB(tmp->format, 255, 0, 255));
-	
-	sprites_img[a] = SDL_DisplayFormat(tmp);
-	
-	SDL_FreeSurface(tmp);
-	
-	#ifdef DEBUG
-		fprintf(stderr, "It seemed to work.\n");
-	#endif
+
+	SDL_SetColorKey(sprites_img[a], (SDL_SRCCOLORKEY | SDL_RLEACCEL), SDL_MapRGB(sprites_img[a]->format, 255, 0, 255));
 	
 	sprites_img_tocopy[a] = 0;
 	
@@ -268,96 +243,18 @@ void Controls()
 {
 		SceCtrlData pad;
 		sceCtrlPeekBufferPositive(&pad,1);
-
-		if (pad.Buttons & Buttons_UP)	
-		{
-			BUTTON.UP = 1;	
-		}
-		else
-		{
-			BUTTON.UP = 0;	
-		}
 		
-		if (pad.Buttons & Buttons_DOWN)	
-		{
-			BUTTON.DOWN = 1;	
-		}
-		else
-		{
-			BUTTON.DOWN = 0;	
-		}
+		BUTTON.UP 	= (pad.Buttons & Buttons_UP)	 ? 1 : 0;
+		BUTTON.DOWN 	= (pad.Buttons & Buttons_DOWN)	 ? 1 : 0;
+		BUTTON.LEFT 	= (pad.Buttons & Buttons_LEFT)	 ? 1 : 0;
+		BUTTON.RIGHT 	= (pad.Buttons & Buttons_RIGHT) ? 1 : 0;
 		
-		if (pad.Buttons & Buttons_LEFT)	
-		{
-			BUTTON.LEFT = 1;	
-		}
-		else
-		{
-			BUTTON.LEFT = 0;	
-		}
-		
-		if (pad.Buttons & Buttons_RIGHT)	
-		{	
-			BUTTON.RIGHT = 1;	
-		}
-		else
-		{
-			BUTTON.RIGHT = 0;	
-		}
-
-		if (pad.Buttons & Buttons_A)	
-		{
-			BUTTON.A = 1;	
-		}
-		else
-		{
-			BUTTON.A = 0;	
-		}
-		
-		if (pad.Buttons & Buttons_B)	
-		{
-			BUTTON.B = 1;	
-		}
-		else
-		{
-			BUTTON.B = 0;	
-		}
-		
-		if (pad.Buttons & Buttons_C)	
-		{
-			BUTTON.C = 1;	
-		}
-		else
-		{
-			BUTTON.C = 0;	
-		}
-		
-		if (pad.Buttons & Buttons_D)	
-		{
-			BUTTON.D = 1;	
-		}
-		else
-		{
-			BUTTON.D = 0;	
-		}
-		
-		if (pad.Buttons & Buttons_START)	
-		{
-			BUTTON.START = 1;	
-		}
-		else
-		{
-			BUTTON.START = 0;	
-		}
-			
-		if (pad.Buttons & Buttons_SELECT)	
-		{
-			BUTTON.SELECT = 1;	
-		}
-		else
-		{
-			BUTTON.SELECT = 0;	
-		}
+		BUTTON.A 	= (pad.Buttons & Buttons_A) ? 1 : 0;
+		BUTTON.B 	= (pad.Buttons & Buttons_B) ? 1 : 0;
+		BUTTON.C 	= (pad.Buttons & Buttons_C) ? 1 : 0;
+		BUTTON.D 	= (pad.Buttons & Buttons_D) ? 1 : 0;
+		BUTTON.START 	= (pad.Buttons & Buttons_START) ? 1 : 0;
+		BUTTON.SELECT 	= (pad.Buttons & Buttons_SELECT) ? 1 : 0;
 }
 
 void Clear_Image(unsigned short a)

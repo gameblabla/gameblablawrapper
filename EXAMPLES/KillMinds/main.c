@@ -20,8 +20,8 @@
  * At least it works
 */
 
-#include "API.h"
-#include "INPUT.h"
+#include "WRAPPER/API.h"
+#include "WRAPPER/INPUT.h"
 #include "main.h"
 
 #ifdef DREAMCAST
@@ -93,7 +93,7 @@ void InitializeGame()
 	CaseX = 141;
 	CaseY = 117;
 	
-	for (i=0;i<8;i++)
+	for (i=0;i<7;i++)
 	{
 		score_showed[i] = 0;
 		highscore_show[i] = 0;
@@ -159,8 +159,7 @@ void Show_startbutton()
 	{
 		Put_image(40, 90, 160);
 	}
-
-	if (time_press > 59) 
+	else if (time_press > 59) 
 	{
 		time_press = 0;
 	}
@@ -172,41 +171,34 @@ void Show_Square()
 
 	Put_sprite(2, CaseX, CaseY, 40, 38, frame);
 
-	if (gamemo == 2)
+	switch(gamemo)
 	{
-		go_time++;
+		case 2:
+			go_time++;
+			
+			// Show "Game Over" frame
+			frame = 14;
+
+			if (go_time > 180) go_back_titlescreen();
+		break;
 		
-		// Show "Game Over" frame
-		frame = 14;
+		case 1:
+			frame = 13;
 
-		if (go_time > 180)
-		{
-			go_back_titlescreen();
-		}
-
+			if (frame_gamemo > 35)
+			{
+				gamemo = 0;
+				frame_gamemo = 0;
+			}
+			else frame_gamemo++;
+		break;
+		
+		case 0:
+			// Show the square you're holding
+			frame = Case_pos;
+		break;
 	}
-	else if (gamemo == 1)
-	{
-		// Show "Smiley missed" frame
-		frame = 13;
 
-		if (frame_gamemo > 35)
-		{
-			gamemo = 0;
-			frame_gamemo = 0;
-		}
-		else
-		{
-			frame_gamemo++;
-		}
-
-
-	}
-	else if (gamemo == 0)
-	{
-		// Show the square you're holding
-		frame = Case_pos;
-	}
 
 }
 
@@ -230,17 +222,13 @@ void Show_Game()
 	}
 	
 	//	Score_0 ,..., Score_6
-	for (i=0;i<7;i++)
+	for (i=0;i<6;i++)
 	{
-		if (i < 6)
-		{
-			if (score_showed[i] != 0) Put_sprite(5, 49+(i*12), 6, 16, 16, score_showed[i]);
-		}
-		else
-		{
-			Put_sprite(5, 49+(i*12), 6, 16, 16, score_showed[i]);
-		}
+		if (score_showed[i] != 0) Put_sprite(5, 49+(i*12), 6, 16, 16, score_showed[i]);
 	}
+	
+	Put_sprite(5, 49+(6*12), 6, 16, 16, score_showed[6]);
+	
 	
 	//	Lives_spr
 	Put_sprite(12, 272, 6, 16, 16, lives);
@@ -265,28 +253,16 @@ void Show_Game()
 	 * If the square is empty then it is not shown
 	*/
 
-	// SPR_left_spot[0],.., SPR_left_spot[3]
 	for (i=0;i<4;i++)
 	{
 		if (left_spot[i] != 0) Put_sprite(18+i, 77, 117, 40, 38, left_spot[i]);
-	}
-
-	// SPR_right_spot[0],.., SPR_right_spot[3]
-	for (i=0;i<4;i++)
-	{
+		
 		if (right_spot[i] != 0) Put_sprite(22+i, 205, 117, 40, 38, right_spot[i]);
-	}
-
-	// SPR_up_spot[0],.., SPR_up_spot[3]
-	for (i=0;i<4;i++)
-	{
+		
 		if (up_spot[i] != 0) Put_sprite(26+i, 141, 53, 40, 38, up_spot[i]);
-	}
-	
-	// SPR_down_spot[0],.., SPR_down_spot[3]
-	for (i=0;i<4;i++)
-	{
+		
 		if (down_spot[i] != 0) Put_sprite(26+i, 141, 181, 40, 38, down_spot[i]);
+		
 	}
 
 }
@@ -302,8 +278,7 @@ void Move_Square()
 		lose_a_life();
 		reset_case();
 	}
-
-	if (reload < 90) // Player can play after some ms
+	else if (reload < 90) // Player can play after some ms
 	{
 		if (BUTTON.UP)
 		{
@@ -503,22 +478,36 @@ short reset_case()
 					good = 0;
 				}
 			}
-
-			if (Case_pos > 0 && Case_pos < 5)
+			
+			switch(Case_pos)
 			{
-				Case_COLOR = 1;
-			}
-			else if (Case_pos > 4 && Case_pos < 9)
-			{
-				Case_COLOR = 2;
-			}
-			else if (Case_pos > 8 && Case_pos < 13)
-			{
-				Case_COLOR = 3;
-			}
-			else if (Case_pos > 12 && Case_pos < 17)
-			{
-				Case_COLOR = 4;
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+					Case_COLOR = 1;
+				break;
+				
+				case 5:
+				case 6:
+				case 7:
+				case 8:
+					Case_COLOR = 2;
+				break;
+				
+				case 9:
+				case 10:
+				case 11:
+				case 12:
+					Case_COLOR = 3;
+				break;
+				
+				case 13:
+				case 14:
+				case 15:
+				case 16:
+					Case_COLOR = 4;
+				break;
 			}
 
 			reload = 100;
@@ -557,6 +546,7 @@ void add_allsprites()
 
 	// Score_0, ... , Score_6, Lives_spr , Time_0, ... , Time_2
 	Load_Image(5,score_img);
+	
 	for (i=0;i<=10;i++)
 	{
 		Copy_Image(5, 6+i);
