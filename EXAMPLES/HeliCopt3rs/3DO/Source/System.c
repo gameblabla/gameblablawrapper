@@ -14,7 +14,7 @@
 // Number of control pads to use
 static const int	sNumControlPads	= 2;
 
-bool InitializeControlPads()
+unsigned char InitializeControlPads()
 {
 
 	// Initialize the control pads

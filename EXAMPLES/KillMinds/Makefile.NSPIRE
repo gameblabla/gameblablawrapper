@@ -1,6 +1,6 @@
 CC = nspire-gcc
 
-CFLAGS = -Os -Wall -Werror -I./WRAPPER -I.
+CFLAGS = -Os -I./WRAPPER -I.
 LDFLAGS = -flto
 DEFINES = -DSAVE
 OUTPUT = killminds

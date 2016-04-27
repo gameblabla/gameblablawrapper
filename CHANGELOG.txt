@@ -1,4 +1,12 @@
 ---------------------
+Version 6.3
+---------------------
+
+3DO version was broken.
+In fact, some things like Music does not work properly...
+Helicopters and Pal detection is now working properly.
+
+---------------------
 Version 6.2
 ---------------------
 

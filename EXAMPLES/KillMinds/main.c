@@ -24,19 +24,9 @@
 #include "WRAPPER/INPUT.h"
 #include "main.h"
 
-#ifdef DREAMCAST
 #include <stdio.h>
 #include <stdlib.h>
-#endif
-
-#ifdef SAVE
-	#ifdef NSPIRE
-		#include <os.h>
-	#else
-		#include <stdio.h>
-		#include <stdlib.h>
-	#endif
-#endif
+#include <time.h>
 
 short right_spot[5], left_spot[5], up_spot[5], down_spot[5];
 
@@ -59,10 +49,16 @@ char score_showed[7] , conv_time[4], highscore_show[7];
 short rtime , lowtime = 10;
 short go_time = 0;
 
+unsigned int game_id = 0;
+FILE* fp2;
+
+unsigned short check_square_score(unsigned char sqr1, unsigned char sqr2, unsigned char sqr3, unsigned char sqr4);
+
 int main(int argc, char* argv[])
 {
 	game_name = "KillMinds";
 	InitializeGame();
+	srand(time(NULL));
 
 	while (!done)
 	{
@@ -222,12 +218,10 @@ void Show_Game()
 	}
 	
 	//	Score_0 ,..., Score_6
-	for (i=0;i<6;i++)
+	for (i=0;i<7;i++)
 	{
-		if (score_showed[i] != 0) Put_sprite(5, 49+(i*12), 6, 16, 16, score_showed[i]);
+		Put_sprite(5, 49+(i*12), 6, 16, 16, score_showed[i]);
 	}
-	
-	Put_sprite(5, 49+(6*12), 6, 16, 16, score_showed[6]);
 	
 	
 	//	Lives_spr
@@ -267,9 +261,23 @@ void Show_Game()
 
 }
 
+unsigned short check_square_score(unsigned char sqr1, unsigned char sqr2, unsigned char sqr3, unsigned char sqr4)
+{
+	// Check if all squares are green
+	if (sqr1 == 9 && sqr2 == 10 && sqr3 == 11 && sqr4 == 12)
+		return 300;
+	else if (sqr1 == 5 && sqr2 == 6 && sqr3 == 7 && sqr4 == 8)
+		return 300;
+	else if (sqr1 == 1 && sqr2 == 2 && sqr3 == 3 && sqr4 == 4)
+		return 300;
+	else
+		return 30;
+}
+
 void Move_Square()
 {
 	unsigned char i;
+	unsigned short sqr_score_filled;
 	
 	reload--;
 
@@ -300,11 +308,12 @@ void Move_Square()
 			
 			if (up_spot[0] > 0 && up_spot[1] > 0 && up_spot[2] > 0 && up_spot[3] > 0)
 			{
+				sqr_score_filled = check_square_score(up_spot[0], up_spot[1], up_spot[2], up_spot[3]);
 				for(i=0;i<4;i++) 
 				{
 					up_spot[i] = 0;
 				}
-				score = score + 30;
+				score = score + sqr_score_filled;
 				calcul_score();
 			}
 
@@ -332,11 +341,12 @@ void Move_Square()
 			
 			if (down_spot[0] > 0 && down_spot[1] > 0 && down_spot[2] > 0 && down_spot[3] > 0)
 			{
+				sqr_score_filled = check_square_score(down_spot[0], down_spot[1], down_spot[2], down_spot[3]);
 				for(i=0;i<4;i++) 
 				{
 					down_spot[i] = 0;
 				}
-				score = score + 30;
+				score = score + sqr_score_filled;
 				calcul_score();
 			}
 
@@ -364,11 +374,12 @@ void Move_Square()
 
 			if (left_spot[0] > 0 && left_spot[1] > 0 && left_spot[2] > 0 && left_spot[3] > 0)
 			{
+				sqr_score_filled = check_square_score(left_spot[0], left_spot[1], left_spot[2], left_spot[3]);
 				for(i=0;i<4;i++) 
 				{
 					left_spot[i] = 0;
 				}
-				score = score + 30;
+				score = score + sqr_score_filled;
 				calcul_score();
 			}
 
@@ -396,16 +407,16 @@ void Move_Square()
 			
 				if (right_spot[0] > 0 && right_spot[1] > 0 && right_spot[2] > 0 && right_spot[3] > 0)
 				{
+					sqr_score_filled = check_square_score(right_spot[0], right_spot[1], right_spot[2], right_spot[3]);
 					for(i=0;i<4;i++) 
 					{
 						right_spot[i] = 0;
 					}
-					score = score + 30;
+					score = score + sqr_score_filled;
 					calcul_score();
 				}
 
 			reset_case();
-
 		}
 	}
 

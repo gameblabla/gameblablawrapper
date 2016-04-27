@@ -4,7 +4,7 @@
 // Credit would be appreciated, but not required.
 
 // Initialize the control pads
-bool InitializeControlPads();
+unsigned char InitializeControlPads();
 
 // Destroy the control pads
 void DestroyControlPads();

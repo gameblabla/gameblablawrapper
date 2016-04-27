@@ -11,7 +11,7 @@ int main ( int argc, char* argv[] )
     Init_video();
     Init_sound();
     Load_Image(1,"yourimage.bmp");
-    Load_Music("data/example.wav");
+    Load_Music("data/volbeat.wav");
     Play_Music(1);
 
     while (!done)
