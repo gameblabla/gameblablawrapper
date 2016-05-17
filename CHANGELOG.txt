@@ -1,4 +1,10 @@
 ---------------------
+Version 6.31
+---------------------
+
+This fixes Music playback with games like Opossum Massage Simulator.
+
+---------------------
 Version 6.3
 ---------------------
 

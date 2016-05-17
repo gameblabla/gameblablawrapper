@@ -302,6 +302,7 @@ void Clear_Images()
 			{
 				Mix_HaltMusic();
 				Mix_FreeMusic(music);
+				music = NULL;
 			}
 		}
 
@@ -310,7 +311,6 @@ void Clear_Images()
 			#ifdef DEBUG
 				fprintf(stderr, "Load music in memory\n");
 			#endif
-			Clean_Music();
 			music = Mix_LoadMUS(directory);
 		}
 
