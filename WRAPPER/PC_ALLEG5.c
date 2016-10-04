@@ -1,16 +1,14 @@
 /*
-   COPYRIGHT (C) 2014-2015 GAMEBLABLA
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+The MIT License (MIT)
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+Copyright (c) 2016 Gameblabla
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to deal in the Software without restriction, 
+including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
+and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
 */
 
 /*                
@@ -39,7 +37,7 @@
 	#include <allegro5/allegro_audio.h>
 	#define MAX_SFX 32
 	ALLEGRO_SAMPLE *music;
-	ALLEGRO_SAMPLE *gfx_id[MAX_SFX];
+	ALLEGRO_SAMPLE *sfx_id[MAX_SFX];
 #endif
 
 #include "INPUT.h"
@@ -61,17 +59,17 @@ float scaleW,scaleH,scaleX,scaleY;
 /* 	PC
 	CONTROLLER KEY MAPPINGS
 */
-	#define Buttons_UP ALLEGRO_KEY_UP
-	#define Buttons_LEFT ALLEGRO_KEY_LEFT
-	#define Buttons_RIGHT ALLEGRO_KEY_RIGHT
-	#define Buttons_DOWN ALLEGRO_KEY_DOWN
-	#define Buttons_A ALLEGRO_KEY_X
-	#define Buttons_B ALLEGRO_KEY_C
-	#define Buttons_C ALLEGRO_KEY_V
-	#define Buttons_D ALLEGRO_KEY_B
-	#define Buttons_START ALLEGRO_KEY_SPACE
-	#define Buttons_SELECT ALLEGRO_KEY_BACKSPACE
-	#define Buttons_QUIT ALLEGRO_KEY_ESCAPE
+#define Buttons_UP ALLEGRO_KEY_UP
+#define Buttons_LEFT ALLEGRO_KEY_LEFT
+#define Buttons_RIGHT ALLEGRO_KEY_RIGHT
+#define Buttons_DOWN ALLEGRO_KEY_DOWN
+#define Buttons_A ALLEGRO_KEY_X
+#define Buttons_B ALLEGRO_KEY_C
+#define Buttons_C ALLEGRO_KEY_V
+#define Buttons_D ALLEGRO_KEY_B
+#define Buttons_START ALLEGRO_KEY_SPACE
+#define Buttons_SELECT ALLEGRO_KEY_BACKSPACE
+#define Buttons_QUIT ALLEGRO_KEY_ESCAPE
 	
 void msleep(unsigned char milisec)
 {
@@ -101,21 +99,14 @@ void Init_video()
 	screen = al_create_display(windowWidth, windowHeight);
 	buffer = al_create_bitmap(320, 240);
 
-	/* 
-	FFUUUUU, this doesn't work 
-	float sx = windowWidth / 320;
-	float sy = windowHeight / 240;
-	*/
+	/*float sx = float(windowWidth / 320);
+	float sy = float(windowHeight / 240);*/
 	
 	if (windowWidth>windowHeight)
 	{
 		for(i=0;scaleH<windowHeight+1;i++)
 		{
-			/* 
-			 * Replace 1.3333... with (4/3) and see the result...
-			 * I have no idea why this does not work...
-			*/
-			scaleW = scaleW + 1.333333333;
+			scaleW = float(scaleW + 4/3);
 			scaleH = scaleH + 1;
 		}
 		
@@ -127,7 +118,7 @@ void Init_video()
 		for(i=0;scaleW<windowWidth+1;i++)
 		{
 			scaleW = scaleW + 1;
-			scaleH = scaleH + 0.75;
+			scaleH = float(scaleH + 3/4);
 		}
 		
 		scaleW = windowWidth;
@@ -386,11 +377,11 @@ void Clear_Images()
 			fprintf(stderr, "Loading sound effect %d (%s) in memory\n", i, directory);
 		#endif
 		
-		if (gfx_id[i] != NULL)
+		if (sfx_id[i] != NULL)
 		{
-			al_destroy_sample(gfx_id[i]);
+			al_destroy_sample(sfx_id[i]);
 		}
-		gfx_id[i] = al_load_sample(directory);
+		sfx_id[i] = al_load_sample(directory);
 	}
 
 	void Play_SFX(unsigned char i)
@@ -399,7 +390,7 @@ void Clear_Images()
 			fprintf(stderr, "Play sound effect %d loaded in memory\n", i);
 		#endif
 		
-		al_play_sample(gfx_id[i], 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+		al_play_sample(sfx_id[i], 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 	}
 
 	void Unload_SFX()
@@ -412,9 +403,9 @@ void Clear_Images()
 		
 		for (i=0;i<MAX_SFX;i++)
 		{ 
-			if (gfx_id[i] != NULL)
+			if (sfx_id[i] != NULL)
 			{
-				al_destroy_sample(gfx_id[i]);
+				al_destroy_sample(sfx_id[i]);
 			}
 		}
 	}

@@ -38,9 +38,11 @@ With the Gameblabla's Wrapper, you can :
 All of this with the same piece of code !
 The only differences are the limitations of each platform and library.
 
+You can also use it as a reference or a teaching tool if you want to know how to use SDL 2.0 for example.
+
 ==========
 LICENSE
 ==========
 
-The Gameblabla's wrapper is licensed under the Apache License Version 2.0.
-See the NOTICE file for more details.
+The Gameblabla's wrapper is now licensed under the MIT license.
+See the COPYING file for more details.

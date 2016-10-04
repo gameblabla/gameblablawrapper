@@ -2,7 +2,7 @@
 ROADMAP (TO DO LIST)
 
 - Provide functions for text drawing
-	'nuff said. (The problem is that i still don't know how to use the same bitmap several time without loading a second copy...)
+	'nuff said. (The problem is that i still don't know how to use the same bitmap several time without loading a second copy on the 3DO...)
 
 - Improve Allegro5's keyboard reponsiveness (It is strangely laggy and has high latency)
 	Add Joystick support as well.
@@ -25,11 +25,5 @@ ROADMAP (TO DO LIST)
 	Use Ph3nom's libgl for graphics and add WAV stream support.
 	Improve sound support overall because it's somewhat broken.
 
-- Improve GCW Zero's port
-	Use OpenGLES instead for graphics.
-	
 - Support for the NEC PC-FX
 	Liberis works but is is still in its infancy and right now, it's very low level.
-	
-- Add Android/OUYA support
-	With virtual gamepad as well.

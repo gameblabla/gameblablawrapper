@@ -13,7 +13,7 @@ extern void Put_sprite(unsigned short a, short x, short y, unsigned short w, uns
 
 extern void Draw_Pixel(unsigned short x, unsigned short y, unsigned char R, unsigned char G, unsigned char B);
 
-extern void Draw_Rect(unsigned short x, unsigned short y, unsigned short width, unsigned char R, unsigned char G, unsigned char B);
+extern void Draw_Rect(unsigned short x, unsigned short y, unsigned short width, unsigned short height, unsigned char R, unsigned char G, unsigned char B);
 
 /* 
  * Could cause problems on some platforms
@@ -34,7 +34,11 @@ extern void Clearing();
 extern void Init_sound();
 
 extern void Load_Music(const char* directory);
+#ifdef THREEDO
+extern void Play_Music(int id, char loop)
+#else
 extern void Play_Music(char loop);
+#endif
 extern void Clean_Music();
 
 extern void Load_SFX(unsigned char i, const char* directory);

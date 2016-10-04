@@ -70,6 +70,7 @@ Clearing()
 Clears everything in memory.
 
 
+
 Note :
 To enable sound , the SOUND_ENABLED define must be defined either at compile time (-DSOUND_ENABLED)
 or in the api.h file like this : #define SOUND_ENABLED
@@ -98,15 +99,20 @@ OGG files will reboot the PSP due to a bug in SDL_mixer for that platform.
 
 On the 3DO, only uncompressed AIFF format is supported.
 
-=====================
-Play_Music(char loop)
-=====================
+==============================================================
+Play_Music(char loop) or Play_Music(int id, char loop) on 3DO
+===============================================================
 Plays the music.
 'loop' is how many times it is repeated. 
 -1 means it will never end.
 
 On the 3DO, the music must be in AIFF 16-bits 44100 hz Stereo format.
-If not , expect huge slowdowns and freezes !
+If not, the file will not play properly.
+In addition to that, the music files must be placed in the "Music" folder
+and they should be renamed like that :
+Song1, Song2, Song3... and so on.
+
+The music on the 3DO will also always loop.
 
 =============
 Clean_Music()

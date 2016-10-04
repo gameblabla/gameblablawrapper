@@ -14,7 +14,7 @@ These improvements can be noticeable on some platforms, especially on Atari Falc
 PC (SDL 2.0)
 ===========
 
-For this port, i'm scalling it up to the whole screen.
+For this port, i'm scaling it up to the whole screen.
 This looks quite good and it is using the graphic card for doing this.
 SDL 2.0 does consume 3x times more memory than SDL 1.2.
 On modern hardware however, this port should be preferred.
@@ -74,7 +74,8 @@ I'm only using SDL for video, not even for input.
 For input, i'm using the input libraries provided by KOS.
 
 For sound, i'm using tremor and XingMP3.
-XingMP3 is GPL2+ thankfully so i don't have to change my license.
+XingMP3 is GPL2+ thankfully so i don't have to change my license
+but it might be a problem for you.
 
 Basically, i'm simply looking at the file extension and determing
 what library should i use for playing the music file.
@@ -84,7 +85,7 @@ It is still incomplete though.
 First, i want this port to completely make use of the PowerVR by using ph3nom's libgl.
 Second, i badly need code to stream WAV file music.
 Working around the SPU reminds me of the 3DO,
-when i had a hard time working with sound until i have found a workaround.  (still pretty hacky)
+when i had a hard time working with sound until i have found a solution.
 
 Anyways, it can be improved.
 
@@ -105,8 +106,8 @@ TI NSPIRE
 ===========
 
 This port uses nSDL by Hoffa.
-Sound is not supported on TI Nspire CX because it's a calculator. (i think that's obvious but some people still ask me this question)
-If nRGBlib supports loading external files, then i will probably use that library instead in the future because it's way faster than nSDL.
+Sound is not supported on TI Nspire CX because it's a calculator. (i think that's obvious but some people still asks me this question)
+There are plans to switch to n2DLib.
 
 ===========
 GIZMONDO

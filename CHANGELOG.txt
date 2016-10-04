@@ -1,4 +1,15 @@
 ---------------------
+Version 6.4
+---------------------
+
+Re-licensed to MIT license.
+Better sound support on 3DO.
+Some minor fixes as well.
+
+3DO examples were remove for now.
+I plan to open-source them seperately later.
+
+---------------------
 Version 6.31
 ---------------------
 

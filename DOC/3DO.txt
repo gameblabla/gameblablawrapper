@@ -28,16 +28,8 @@ BMPTo3DOAnim 32 46 Sprite.bmp Sprite.cel
 2 - The 3DO only accepts uncompressed AIFF files
 -----------------------------------------------------------------------------------
 
-It accepts the AIFC SDX2 format as well but it requires
-lots of CPU time. You don't want to use it.
-
-The 3DO has another annoying hardware limitation,
-its cache for audio files is only 32 kb. (except Music, which is streamed from the CD)
-WHAT THE HELL 3DO ?
-
-Anyways, you can play music but at the cost of one frame that will be freezed per second. 
-So on NTSC , 1 frame out of the 60 frames per second will be freezed.
-This can be noticeable , especially in-game.
+It also accepts the AIFC SDX2 format as well but it might require some CPU time. 
+You don't want to use it unless you run out of space.
 
 If you find the limitations too annoying , 
 you can disable audio support for the 3DO altogether.
@@ -48,9 +40,6 @@ to this :
 -d SOUND_ENABLED=0
 
 Audacity (and others) can convert to AIFF uncompressed format with no problems.
-
-3DO allows two frequencies : 22050 hz and 44100 hz.
-They can be either Mono or Stereo and 8-bits or 16-bits.
 
 ---------------------------------------------------------------------------------------------------------
 3 - A sprite can only be shown once and can't be shown on screen twice or more unless you use Copy_Image()
@@ -64,16 +53,15 @@ Use Copy_Image() if you want to show the same image twice or more on screen.
 4 - Other limitations...
 --------------------------------------
 
+The Gameblabla's Wrapper now requires burgerlib :i t can be found in the thirdparty folder.
+You may have to modify your headers before you can compile it properly.
+
 The 3DO comes with 1 MB of video memory.
 While it seems big compared to consoles like the Megadrive,
 all the files are 16-bits uncompressed images files. 
 If you're not careful, you will quickly ran out of video memory.
 
-The 3DO also comes with 2MB of RAM, which is too big
-considering that sound files are never actually stored there 
-but in the tiny cache reserved for them.
-You shouldn't worry about the executable size of your program.
-(Unless you're porting Firefox to it, of course)
+The 3DO also comes with 2MB of RAM, so don't use big arrays.
 
 Its resolution on NTSC TVs is 320x240 and on PAL,
 the resolution is 320x288.

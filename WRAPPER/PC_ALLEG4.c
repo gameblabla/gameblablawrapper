@@ -1,16 +1,14 @@
 /*
-   COPYRIGHT (C) 2014-2015 GAMEBLABLA
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+The MIT License (MIT)
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+Copyright (c) 2016 Gameblabla
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to deal in the Software without restriction, 
+including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
+and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
 */
 
 #define FPS_VIDEO 60
@@ -33,7 +31,7 @@ END_OF_FUNCTION(ticker)
 #ifdef SOUND_ENABLED
 	#define MAX_SFX 32
 	SAMPLE *music;
-	SAMPLE *gfx_id[MAX_SFX];
+	SAMPLE *sfx_id[MAX_SFX];
 #endif
 
 #ifdef IMAGE_CODEC_ENABLED
@@ -292,12 +290,12 @@ void Clear_Images()
 				fprintf(stderr, "Loading sound effect %d (%s) in memory\n", i, directory);
 			#endif
 			
-			if (gfx_id[i])
+			if (sfx_id[i])
 			{
-				destroy_sample(gfx_id[i]);
+				destroy_sample(sfx_id[i]);
 			}
 			
-			gfx_id[i] = load_wav(directory);
+			sfx_id[i] = load_wav(directory);
 		}
 
 		void Play_SFX(unsigned char i)
@@ -306,7 +304,7 @@ void Clear_Images()
 				fprintf(stderr, "Play sound effect %d loaded in memory\n", i);
 			#endif
 			
-			play_sample(gfx_id[i], 128, 128, 1000, 0);
+			play_sample(sfx_id[i], 128, 128, 1000, 0);
 		}
 
 		void Unload_SFX()
@@ -319,9 +317,9 @@ void Clear_Images()
 			
 			for (i=0;i<MAX_SFX;i++) 
 			{
-				if (gfx_id[i])
+				if (sfx_id[i])
 				{
-					destroy_sample(gfx_id[i]);
+					destroy_sample(sfx_id[i]);
 				}
 			}
 		}

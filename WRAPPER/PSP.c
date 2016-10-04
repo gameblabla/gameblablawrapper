@@ -1,16 +1,14 @@
 /*
-   COPYRIGHT (C) 2014-2015 GAMEBLABLA
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+The MIT License (MIT)
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+Copyright (c) 2016 Gameblabla
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to deal in the Software without restriction, 
+including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
+and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
 */
 
 #include <pspkernel.h>
@@ -34,7 +32,7 @@ PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
 	#include <SDL/SDL_mixer.h>
 	#define MAX_SFX 16
 	int music;
-	int gfx_id[32];
+	int sfx_id[32];
 #endif
 
 #ifdef IMAGE_CODEC_ENABLED
@@ -338,12 +336,12 @@ void Clear_Images()
 				fprintf(stderr, "Load sound effect %d (%s) in memory\n", i, directory);
 			#endif
 			
-			if (gfx_id[i])
+			if (sfx_id[i])
 			{
-				Mix_FreeChunk(gfx_id[i]);
-				gfx_id[i] = NULL;
+				Mix_FreeChunk(sfx_id[i]);
+				sfx_id[i] = NULL;
 			}
-			gfx_id[i] = Mix_LoadWAV(directory);
+			sfx_id[i] = Mix_LoadWAV(directory);
 		}
 
 		void Play_SFX(unsigned char i)
@@ -352,7 +350,7 @@ void Clear_Images()
 				fprintf(stderr, "Play sound effect %d loaded in memory\n", i);
 			#endif
 			
-			Mix_PlayChannel(-1, gfx_id[i], 0) ;
+			Mix_PlayChannel(-1, sfx_id[i], 0) ;
 		}
 
 		void Unload_SFX()
@@ -365,10 +363,10 @@ void Clear_Images()
 			
 			for (i=0;i<MAX_SFX;i++) 
 			{
-				if (gfx_id[i])
+				if (sfx_id[i])
 				{
-					Mix_FreeChunk(gfx_id[i]);
-					gfx_id[i] = NULL;
+					Mix_FreeChunk(sfx_id[i]);
+					sfx_id[i] = NULL;
 				}
 			}
 		}
