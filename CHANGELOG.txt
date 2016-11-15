@@ -1,4 +1,11 @@
 ---------------------
+Version 6.41
+---------------------
+
+Introducing initial support for ToaruOS and fixed nspire support.
+I plan to improve TI-Nspire support in the near-future tho.
+
+---------------------
 Version 6.4
 ---------------------
 

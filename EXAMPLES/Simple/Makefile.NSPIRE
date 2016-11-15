@@ -12,7 +12,7 @@ ZEHNFLAGS = --name "simple"
 
 GCCFLAGS += -Os -I./WRAPPER
 
-OBJS = main.c WRAPPER/NSPIRE.c
+OBJS = main.c WRAPPER/NSPIRE.c n2DLib.c
 EXE = simple
 DISTDIR = .
 vpath %.tns $(DISTDIR)
