@@ -8,7 +8,7 @@ int main ( int argc, char* argv[] )
     x = 50;
     y = 50;
 
-    Init_video();
+    Init_video(argv);
     Init_sound();
     Load_Image(1,"yourimage.bmp");
     Load_Music("data/volbeat.wav");

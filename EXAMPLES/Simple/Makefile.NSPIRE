@@ -6,11 +6,11 @@ GXX = nspire-g++
 LD  = nspire-ld
 GENZEHN = genzehn
 
-GCCFLAGS = -Wall -W -marm -mcpu=arm926ej-s
+CFLAGS = -Wall -W -marm -mcpu=arm926ej-s -I.
+CFLAGS += -Os -I./WRAPPER
 LDFLAGS = -Wl,--as-needed
 ZEHNFLAGS = --name "simple"
 
-GCCFLAGS += -Os -I./WRAPPER
 
 OBJS = main.c WRAPPER/NSPIRE.c n2DLib.c
 EXE = simple
@@ -21,17 +21,17 @@ vpath %.elf $(DISTDIR)
 all: $(EXE).prg.tns
 
 %.o: %.c
-	$(GCC) $(GCCFLAGS) -c $<
+	$(GCC) $(CFLAGS) -c $<
 
 %.o: %.cpp
-	$(GXX) $(GCCFLAGS) -c $<
+	$(GXX) $(CFLAGS) -c $<
 	
 %.o: %.S
 	$(AS) -c $<
 
 $(EXE).elf: $(OBJS)
 	mkdir -p $(DISTDIR)
-	$(LD) $^ -o $(DISTDIR)/$@ $(LDFLAGS)
+	$(LD) $(CFLAGS) $^ -o  $(DISTDIR)/$@ $(LDFLAGS)
 
 $(EXE).tns: $(EXE).elf
 	$(GENZEHN) --input $(DISTDIR)/$^ --output $(DISTDIR)/$@ $(ZEHNFLAGS)

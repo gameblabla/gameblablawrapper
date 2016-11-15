@@ -75,7 +75,7 @@ void msleep(unsigned char milisec)
 {
 }
 
-void Init_video()
+void Init_video(char* argv[])
 {
 	short i;
 	short windowWidth, windowHeight;

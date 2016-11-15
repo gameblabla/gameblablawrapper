@@ -8,7 +8,7 @@ int main ( int argc, char* argv[] )
     x = 50;
     y = 50;
 
-    Init_video();
+    Init_video(argv);
     Load_Image(1,"yourimage.bmp");
 
     while (!done)

@@ -67,7 +67,7 @@ int main ( int argc, char* argv[] )
 {
 		game_name = "Heli-Copt3rs";
 		
-		Init_video();
+		Init_video(argv);
 		Init_sound();
 		
 		game_mode = 0;

@@ -73,7 +73,7 @@ void msleep(unsigned char milisec)
 	SDL_Delay(milisec);
 }
 
-void Init_video()
+void Init_video(char* argv[])
 {
 	  SetupCallbacks();
 	  sceCtrlSetSamplingCycle(0);

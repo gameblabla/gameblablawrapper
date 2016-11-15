@@ -57,6 +57,7 @@ unsigned short check_square_score(unsigned char sqr1, unsigned char sqr2, unsign
 int main(int argc, char* argv[])
 {
 	game_name = "KillMinds";
+	Init_video(argv);
 	InitializeGame();
 	srand(time(NULL));
 
@@ -79,8 +80,6 @@ int main(int argc, char* argv[])
 void InitializeGame()
 {
 	unsigned char i;
-	
-	Init_video();
 
 	Load_Image(1,title_img);
 	Load_Sounds();

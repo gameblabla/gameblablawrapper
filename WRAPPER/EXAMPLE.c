@@ -99,7 +99,7 @@ void msleep(unsigned char milisec)
 	*/
 }
 
-void Init_video()
+void Init_video(char* argv[])
 {
 	/*
 	 * Put everything here for video initialisation and controls.
