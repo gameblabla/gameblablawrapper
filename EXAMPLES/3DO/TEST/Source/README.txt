@@ -1,0 +1,1 @@
+Don't forget to put here API.H, INPUT.H and 3DO.H !

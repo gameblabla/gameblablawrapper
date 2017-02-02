@@ -44,7 +44,6 @@ unsigned short done = 0;
 char* game_name = "";
 
 BITMAP *sprites_img[MAX_IMAGE];
-unsigned short sprites_img_tocopy[MAX_IMAGE];
 
 #define Buttons_UP KEY_UP
 #define Buttons_LEFT KEY_LEFT
@@ -110,19 +109,8 @@ void Load_Image(unsigned short a, const char* directory)
 	#ifdef DEBUG
 		fprintf(stderr, "Loading image %d (%s) was successful\n", a, directory);
 	#endif
-	
-	sprites_img_tocopy[a] = 0;
-
 }
 
-void Copy_Image(unsigned short a, unsigned short i)
-{
-	#ifdef DEBUG
-		fprintf(stderr, "Transfering the data of id %d to id %d.\n", a, i);
-	#endif
-	
-	sprites_img_tocopy[i] = a;
-}
 
 void Put_image(unsigned short a, short x, short y)
 {
@@ -130,15 +118,7 @@ void Put_image(unsigned short a, short x, short y)
 		fprintf(stderr, "Put image %d on screen and update its position\n X: %d \n Y: %d\n", a, x ,y);
 	#endif
 
-	if (sprites_img_tocopy[a] > 0)
-	{
-		masked_blit(sprites_img[sprites_img_tocopy[a]], screen, 0, 0, x, y, sprites_img[sprites_img_tocopy[a]]->w, sprites_img[sprites_img_tocopy[a]]->h);
-	}
-	else
-	{
-		masked_blit(sprites_img[a], screen, 0, 0, x, y, sprites_img[a]->w, sprites_img[a]->h);
-	}
-		
+	masked_blit(sprites_img[a], screen, 0, 0, x, y, sprites_img[a]->w, sprites_img[a]->h);
 }
 
 void Put_sprite(unsigned short a, short x, short y, unsigned short w, unsigned short h, unsigned char f)
@@ -147,14 +127,7 @@ void Put_sprite(unsigned short a, short x, short y, unsigned short w, unsigned s
 		fprintf(stderr, "Put sprite %d on screen and update its position\n X: %d \n Y: %d\n Frame: %d\n", a, x ,y, f);
 	#endif
 
-	if (sprites_img_tocopy[a] > 0)
-	{
-		masked_blit(sprites_img[sprites_img_tocopy[a]], screen, f*w, 0, x, y, w, h);
-	}
-	else
-	{
-		masked_blit(sprites_img[a], screen, f*w, 0, x, y, w, h);
-	}
+	masked_blit(sprites_img[a], screen, f*w, 0, x, y, w, h);
 }
 
 void Clear_screen()
@@ -234,8 +207,6 @@ void Clear_Image(unsigned short a)
 	{
 		destroy_bitmap(sprites_img[a]);
 	}
-	
-	sprites_img_tocopy[a] = 0;
 }
 
 void Clear_Images()
@@ -248,8 +219,6 @@ void Clear_Images()
 		{
 			destroy_bitmap(sprites_img[i]);
 		}
-		
-		sprites_img_tocopy[i] = 0;
 	}
 }
 

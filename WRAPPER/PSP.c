@@ -49,7 +49,6 @@ char* game_name = "";
 
 SDL_Surface *sprites_img[MAX_IMAGE];
 SDL_Surface *screen;
-unsigned short sprites_img_tocopy[MAX_IMAGE];
 
 int exit_callback(int arg1, int arg2, void *common);
 int CallbackThread(SceSize args, void *argp);
@@ -100,17 +99,6 @@ void Load_Image(unsigned short a, const char* directory)
 
 	SDL_SetColorKey(sprites_img[a], (SDL_SRCCOLORKEY | SDL_RLEACCEL), SDL_MapRGB(sprites_img[a]->format, 255, 0, 255));
 	
-	sprites_img_tocopy[a] = 0;
-	
-}
-
-void Copy_Image(unsigned short a, unsigned short i)
-{
-	#ifdef DEBUG
-		fprintf(stderr, "Transfering the data of id %d to id %d.\n", a, i);
-	#endif
-	
-	sprites_img_tocopy[i] = a;
 }
 
 void Put_image(unsigned short a, short x, short y)
@@ -123,14 +111,7 @@ void Put_image(unsigned short a, short x, short y)
 		fprintf(stderr, "Put image %d on screen and update its position\n X: %d \n Y: %d\n", a, x ,y);
 	#endif
 
-	if (sprites_img_tocopy[a] > 0)
-	{
-		SDL_BlitSurface(sprites_img[sprites_img_tocopy[a]], NULL, screen, &position);
-	}
-	else
-	{
-		SDL_BlitSurface(sprites_img[a], NULL, screen, &position);
-	}
+	SDL_BlitSurface(sprites_img[a], NULL, screen, &position);
 }
 
 void Put_sprite(unsigned short a, short x, short y, unsigned short w,unsigned short h, unsigned char f)
@@ -149,14 +130,7 @@ void Put_sprite(unsigned short a, short x, short y, unsigned short w,unsigned sh
 		fprintf(stderr, "Put sprite %d on screen and update its position\n X: %d \n Y: %d\n Frame: %d\n", a, x ,y, f);
 	#endif
 
-	if (sprites_img_tocopy[a] > 0)
-	{
-		SDL_BlitSurface(sprites_img[sprites_img_tocopy[a]], &frame, screen, &position);
-	}
-	else
-	{
-		SDL_BlitSurface(sprites_img[a], &frame, screen, &position);
-	}
+	SDL_BlitSurface(sprites_img[a], &frame, screen, &position);
 }
 
 void Clear_screen()
@@ -261,7 +235,6 @@ void Clear_Image(unsigned short a)
 	{
 		SDL_FreeSurface(sprites_img[a]);
 	}
-	sprites_img_tocopy[a] = 0;
 }
 
 void Clear_Images()
@@ -274,7 +247,6 @@ void Clear_Images()
 		{
 			SDL_FreeSurface(sprites_img[i]);
 		}
-		sprites_img_tocopy[i] = 0;
 	}
 }
 

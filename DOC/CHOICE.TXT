@@ -54,16 +54,10 @@ Other than that, it works great.
 ===========
 
 This port works like the other ones though not it's not identical.
-You can't clear images in memory, or at least i don't know how.
-For now, (from version 5.0) it is only deleted from the display list.
-You need to load a new one to completely delete it.
 
 Another problem : PAL consoles.
 The screen resolution is much bigger and the framerate is slower.
-For the screen resolution, i used black borders.
-That framerate thingy is still not solved though but it could be done easily.
-
-It's just that i don't want programmers to accidently modify the FPS variable...
+As of now, i still have not found a proper solution to this.
 
 ======================
 DREAMCAST (Unfinished)
@@ -105,9 +99,8 @@ I could use OpenGLES instead for graphics.
 TI NSPIRE
 ===========
 
-This port uses nSDL by Hoffa.
+This port now uses n2DLib.
 Sound is not supported on TI Nspire CX because it's a calculator. (i think that's obvious but some people still asks me this question)
-There are plans to switch to n2DLib.
 
 ===========
 GIZMONDO

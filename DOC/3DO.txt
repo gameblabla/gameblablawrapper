@@ -9,7 +9,7 @@ you need to know this :
 1 - The 3DO only accepts CEL image formats
 ---------------------------------------------------------------------------
 
-Of course , you could port libpng to it if you really feel you need it...
+Of course, you could port libpng to it if you really feel you need it...
 
 Also, if you want to move big sprites or scroll backgrounds, make sure to split it into several parts.
 If you don't do this, your game will experience major slowdowns.
@@ -41,19 +41,11 @@ to this :
 
 Audacity (and others) can convert to AIFF uncompressed format with no problems.
 
----------------------------------------------------------------------------------------------------------
-3 - A sprite can only be shown once and can't be shown on screen twice or more unless you use Copy_Image()
----------------------------------------------------------------------------------------------------------
-
-The title says it all.
-The 3DO still has its roots to old video game consoles and it does not work like a fast blitter.
-Use Copy_Image() if you want to show the same image twice or more on screen.
-
 --------------------------------------
-4 - Other limitations...
+3 - Other limitations...
 --------------------------------------
 
-The Gameblabla's Wrapper now requires burgerlib :i t can be found in the thirdparty folder.
+The Gameblabla's Wrapper now requires burgerlib : it can be found in the thirdparty folder.
 You may have to modify your headers before you can compile it properly.
 
 The 3DO comes with 1 MB of video memory.
@@ -62,9 +54,3 @@ all the files are 16-bits uncompressed images files.
 If you're not careful, you will quickly ran out of video memory.
 
 The 3DO also comes with 2MB of RAM, so don't use big arrays.
-
-Its resolution on NTSC TVs is 320x240 and on PAL,
-the resolution is 320x288.
-
-Because my library only officially supports 320x240,
-the game is centered on PAL TVs.

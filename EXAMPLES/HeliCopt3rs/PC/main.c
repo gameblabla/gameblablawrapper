@@ -104,22 +104,13 @@ void load_game_memory()
 	Load_Image(1,"data/background.bmp");
 	Load_Image(2,"data/back.bmp");
 	Load_Image(3,"data/bar_gauche.bmp");
-		Copy_Image(3, 14);
 	Load_Image(4,"data/bar_droite.bmp");
-		Copy_Image(4, 15);
 	Load_Image(5,"data/character.bmp");
 	Load_Image(6,"data/hammer_spr.bmp");
-		Copy_Image(6, 16);
-		Copy_Image(6, 17);
-		Copy_Image(6, 18);
 	Load_Image(7,"data/cloud.bmp");
-		Copy_Image(7, 19);
 	Load_Image(8,"data/gameover.bmp");
 	Load_Image(9,"data/try.bmp");
 	Load_Image(10,"data/score.bmp");
-		Copy_Image(10, 20);
-		Copy_Image(10, 21);
-		Copy_Image(10, 22);
 	Load_Image(11,"data/helice.bmp");
 	Load_Image(12,"data/result.bmp");
 
@@ -175,7 +166,7 @@ void Show_platforme_gauche_0()
 }
 void Show_platforme_gauche_1()
 {
-	Put_image(14, platforme_x_right[1], platforme_y[1]);
+	Put_image(3, platforme_x_right[1], platforme_y[1]);
 }
 void Show_platforme_droite_0()
 {
@@ -183,7 +174,7 @@ void Show_platforme_droite_0()
 }
 void Show_platforme_droite_1()
 {
-	Put_image(15, platforme_x_left[1], platforme_y[1]);
+	Put_image(3, platforme_x_left[1], platforme_y[1]);
 }
 
 void Show_GameOver()
@@ -213,16 +204,16 @@ void Show_score()
 	if (death == 0)
 	{
 		Put_sprite(10, 144, 8, 16, 16, (score/10)%10);
-		Put_sprite(20, 160, 8, 16, 16, (score)%10);
-		Put_sprite(21, -320, 133, 16, 16, 0);
-		Put_sprite(22, -320, 133, 16, 16, 0);
+		Put_sprite(10, 160, 8, 16, 16, (score)%10);
+		Put_sprite(10, -320, 133, 16, 16, 0);
+		Put_sprite(10, -320, 133, 16, 16, 0);
 	}
 	else if (death == 2)
 	{
 		Put_sprite(10, gameover_x+59, 101, 16, 16, (score/10)%10 );
-		Put_sprite(20, gameover_x+75, 101, 16, 16, (score)%10 );
-		Put_sprite(21, gameover_x+59, 133, 16, 16, (highscore/10)%10 );
-		Put_sprite(22, gameover_x+75, 133, 16, 16, (highscore)%10 );
+		Put_sprite(10, gameover_x+75, 101, 16, 16, (score)%10 );
+		Put_sprite(10, gameover_x+59, 133, 16, 16, (highscore/10)%10 );
+		Put_sprite(10, gameover_x+75, 133, 16, 16, (highscore)%10 );
 	}
 
 }
@@ -501,7 +492,7 @@ void Show_Clouds()
 	unsigned char i;
 
 	Put_image(7, cloud_x[0], cloud_y[0]);
-	Put_image(19, cloud_x[1], cloud_y[1]);
+	Put_image(7, cloud_x[1], cloud_y[1]);
 	
 	if (begin == 1) for (i=0; i<2; i++) cloud_y[i] = cloud_y[i] + 1;
 	
@@ -521,9 +512,9 @@ void Show_Clouds()
 void Show_Hammer()
 {
 	Put_sprite(6, hammer_x[0], hammer_y[0], 48, 32, hammer_frame );
-	Put_sprite(16, hammer_x[1], hammer_y[1], 48, 32, hammer_frame );
-	Put_sprite(17, hammer_x[2], hammer_y[2], 48, 32, hammer_frame );
-	Put_sprite(18, hammer_x[3], hammer_y[3], 48, 32, hammer_frame );
+	Put_sprite(6, hammer_x[1], hammer_y[1], 48, 32, hammer_frame );
+	Put_sprite(6, hammer_x[2], hammer_y[2], 48, 32, hammer_frame );
+	Put_sprite(6, hammer_x[3], hammer_y[3], 48, 32, hammer_frame );
 	
 	hammer_x[0] = 226+platforme_x_left[0];
 	hammer_x[1] = platforme_x_right[0]-6;

@@ -2,9 +2,9 @@
 LIST FUNCTIONS
 ==============
 
-=============
-Init_video()
-=============
+==========================
+Init_video(char* argv[])
+==========================
 Initialize the display.
 Depending on the platform, it can do other things too like changing the CPU clock on the PSP.
 This function must be called. (and only once)
@@ -19,12 +19,6 @@ For the other platform (unless the define IMAGE_CODEC_ENABLED is specified at co
 only BMPs are supported.
 
 Pink (RGB 255,0,255) is transparent on all platforms.
-
-===============================================
-Copy_Image(unsigned short a, unsigned short i)
-===============================================
-Copy an existing image already loaded in memory and assign another id to it.
-'a' is the id of the image already loaded in memory and 'i' will take the image of 'a'.
 
 ==============================================
 Put_image(unsigned short a, short x, short y)

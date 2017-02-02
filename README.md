@@ -16,7 +16,7 @@ For :
 * Sega Dreamcast 
 * Gizmondo
 
-Tested: Windows, GNU/Linux, TI Nspire
+Tested (as of latest): Windows, GNU/Linux, 3DO
 
 =============
 DESCRIPTION
@@ -27,7 +27,7 @@ What the hell is this ?
 The Gameblabla's Wrapper is an ANSI C library, its goal is to simplify the development of cross-platform games.
 It was originally designed to enable cross-platform development without using an emulator for 3DO.
 It is now available for several platforms and it is mostly suited for simple single-screen games. 
-(You can do scrolling games too but you will have to copy each tile individually in memory, this might get fixed in the future)
+(You can do scrolling games too if you want to but you will have to do it yourself)
 
 With the Gameblabla's Wrapper, you can :
 - Draw Pixels on screen

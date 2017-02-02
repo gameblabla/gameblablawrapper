@@ -6,13 +6,9 @@ extern char* game_name;
 extern void Init_video();
 
 extern void Load_Image(unsigned short a, const char* directory);
-extern void Copy_Image(unsigned short a, unsigned short i);
-
 extern void Put_image(unsigned short a, short x, short y);
 extern void Put_sprite(unsigned short a, short x, short y, unsigned short w, unsigned short h, unsigned char f);
-
 extern void Draw_Pixel(unsigned short x, unsigned short y, unsigned char R, unsigned char G, unsigned char B);
-
 extern void Draw_Rect(unsigned short x, unsigned short y, unsigned short width, unsigned short height, unsigned char R, unsigned char G, unsigned char B);
 
 /* 

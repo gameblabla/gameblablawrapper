@@ -1,4 +1,18 @@
 ---------------------
+Version 7.0
+---------------------
+
+Good news : Proper copying on the 3DO has finally been figured out !
+Combined with burgerlib, you can now make a decent 3DO game with Gameblabla's Wrapper !
+Pixel drawing routines though are not yet supported as they are very slow on the 3DO...
+Don't rely on them
+
+As a result of this, Copy_Image was removed as well.
+This resulted in a huge clean-up of useless code, which is nice.
+
+The Nspire port now uses n2DLib and it runs faster than nSDL.
+
+---------------------
 Version 6.41
 ---------------------
 
@@ -13,7 +27,7 @@ Re-licensed to MIT license.
 Better sound support on 3DO.
 Some minor fixes as well.
 
-3DO examples were remove for now.
+3DO examples were removed for now.
 I plan to open-source them seperately later.
 
 ---------------------

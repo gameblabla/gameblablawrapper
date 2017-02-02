@@ -52,8 +52,6 @@ ALLEGRO_EVENT_QUEUE *event_queue;
 ALLEGRO_TIMER *timer ;
 ALLEGRO_BITMAP *buffer;
 
-unsigned short sprites_img_tocopy[MAX_IMAGE];
-
 float scaleW,scaleH,scaleX,scaleY;
 
 /* 	PC
@@ -158,18 +156,6 @@ void Load_Image(unsigned short a, const char* directory)
 	#ifdef DEBUG
 		fprintf(stderr, "Loading image %d (%s) was successful\n", a, directory);
 	#endif
-	
-	sprites_img_tocopy[a] = 0;
-
-}
-
-void Copy_Image(unsigned short a, unsigned short i)
-{
-	#ifdef DEBUG_CRAZY
-		fprintf(stderr, "Transfering the data of id %d to id %d.\n", a, i);
-	#endif
-	
-	sprites_img_tocopy[i] = a;
 }
 
 void Put_image(unsigned short a, short x, short y)
@@ -178,14 +164,7 @@ void Put_image(unsigned short a, short x, short y)
 		fprintf(stderr, "Put image %d on screen and update its position\n X: %d \n Y: %d\n", a, x ,y);
 	#endif
 	
-	if (sprites_img_tocopy[a] > 0)
-	{
-		al_draw_bitmap(sprites_img[sprites_img_tocopy[a]], x, y, 0);
-	}
-	else
-	{
-		al_draw_bitmap(sprites_img[a], x, y, 0);
-	}
+	al_draw_bitmap(sprites_img[a], x, y, 0);
 }
 
 void Put_sprite(unsigned short a, short x, short y, unsigned short w, unsigned short h, unsigned char f)
@@ -194,15 +173,7 @@ void Put_sprite(unsigned short a, short x, short y, unsigned short w, unsigned s
 		fprintf(stderr, "Put sprite %d on screen and update its position\n X: %d \n Y: %d\n Frame: %d\n", a, x ,y, f);
 	#endif
 	
-	if (sprites_img_tocopy[a] > 0)
-	{
-		al_draw_bitmap_region(sprites_img[sprites_img_tocopy[a]], f*w, 0, w, h, x, y, 0);
-	}
-	else
-	{
-		al_draw_bitmap_region(sprites_img[a], f*w, 0, w, h, x, y, 0);
-	}
-
+	al_draw_bitmap_region(sprites_img[a], f*w, 0, w, h, x, y, 0);
 }
 
 void Clear_screen()
@@ -309,8 +280,6 @@ void Clear_Image(unsigned short a)
 	{
 		al_destroy_bitmap(sprites_img[a]);
 	}
-	
-	sprites_img_tocopy[a] = 0;
 }
 
 void Clear_Images()
@@ -323,8 +292,6 @@ void Clear_Images()
 		{
 			al_destroy_bitmap(sprites_img[i]);
 		}
-		
-		sprites_img_tocopy[i] = 0;
 	}
 }
 
