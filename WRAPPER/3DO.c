@@ -10,7 +10,6 @@ including without limitation the rights to use, copy, modify, merge, publish, di
 and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 */
-#define SOUND_ENABLED
 
 #include <animutils.h>
 #include <graphics.h>
@@ -38,7 +37,6 @@ and to permit persons to whom the Software is furnished to do so, subject to the
 #define FPS_VIDEO 60
 #define MAX_IMAGE 512
 
-#ifdef SOUND_ENABLED
 #include <burger.h>
 #include <audio.h>
 #include "types.h"
@@ -63,12 +61,12 @@ static TagArg SoundRateArgs[] = {
 	TAG_END,0		/* End of the list */
 };
 int32 sfx_data[MAX_SFX];
-#endif
 
 #define SCREENS	2
 
 ubyte	*gBackground	= NULL;
 ANIM* anim[MAX_IMAGE];
+unsigned char already_inmemory[MAX_IMAGE];
 
 static Item vbitem, spitem;
 static ScreenContext TheScreen;
@@ -97,6 +95,8 @@ static const int	sNumControlPads	= 1;
 #define Buttons_START ControlStart
 #define Buttons_SELECT ControlRightShift
 #define Buttons_QUIT 0
+
+int	gCurrentScreen	= 0;
 
 void msleep(unsigned char milisec)
 {
@@ -130,9 +130,9 @@ void Load_Background(char* directory)
 	LoadImage(directory,  gBackground, (VdlChunk **)NULL, &TheScreen);
 }
 
-void Put_Background()
+void Draw_Background()
 {
-	CopyVRAMPages(spitem, TheScreen.sc_Bitmaps[0]->bm_Buffer, gBackground, TheScreen.sc_nFrameBufferPages, 0xFFFFFFFF);
+	CopyVRAMPages(spitem, TheScreen.sc_Bitmaps[gCurrentScreen]->bm_Buffer, gBackground, TheScreen.sc_nFrameBufferPages, 0xFFFFFFFF);
 }
 
 void Load_Image(unsigned short a, char* directory)
@@ -144,19 +144,26 @@ void Load_Image(unsigned short a, char* directory)
 		converted to CEL ANIM format where Width
 		and Height must be definied at convertion time.
 	*/
-	
+	if (already_inmemory[a]) UnloadAnim(anim[a]);
 	anim[a] = LoadAnim(directory, MEMTYPE_CEL);
+	already_inmemory[a] = 0;
+}
+
+void Copy_Image(unsigned short a, unsigned char i)
+{
 }
 
 void Put_image(unsigned short a, short x, short y)
 {
-	DrawAnimCel(anim[a], TheScreen.sc_BitmapItems[0], x, y, 0, 0);
+	DrawAnimCel(anim[a], TheScreen.sc_BitmapItems[gCurrentScreen], x, y, 0, 0);
 }
 
 void Put_sprite(unsigned short a, short x, short y, unsigned short w, unsigned short h, unsigned char f)
 {
+	if (x < -w || x > 320 || y < -h || y > 240)
+		return;
 	anim[a]->cur_Frame	= Convert32_F16(f);
-	DrawAnimCel(anim[a], TheScreen.sc_BitmapItems[0], x, y, 0, 0);
+	DrawAnimCel(anim[a], TheScreen.sc_BitmapItems[gCurrentScreen], x, y, 0, 0);
 }
 
 void Faster_clearing(short x, short y, unsigned short w, unsigned short h)
@@ -171,7 +178,8 @@ void Clear_screen()
 
 void Update_video()
 {
-	DisplayScreen(TheScreen.sc_Screens[0],0);
+	DisplayScreen(TheScreen.sc_Screens[gCurrentScreen],0);
+	gCurrentScreen	= 1 - gCurrentScreen;
 }
 
 void Faster_update(short x, short y, short w, short h)
@@ -214,7 +222,8 @@ void Controls()
 
 void Clear_Image(unsigned short a)
 {
-	UnloadAnim(anim[a]);
+	if (already_inmemory[a]) UnloadAnim(anim[a]);
+	already_inmemory[a] = 0;
 }
 
 void Clear_Images()
@@ -222,9 +231,10 @@ void Clear_Images()
 	unsigned short i;
 	for (i=0;i<MAX_IMAGE;i++)
 	{
-		if (anim[i])
+		if (already_inmemory[i])
 		{
 			UnloadAnim(anim[i]);
+			already_inmemory[i] = 0;
 		}
 	}
 }
