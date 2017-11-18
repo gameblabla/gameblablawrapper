@@ -1,5 +1,5 @@
 ====================================
-GAMEBLABLA'S WRAPPER VERSION 6.1
+GAMEBLABLA'S WRAPPER VERSION 7.0
 ====================================
 
 For :
